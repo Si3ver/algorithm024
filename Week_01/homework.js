@@ -25,20 +25,44 @@
 
 /**
  * 5. 合并两个有序链表（亚马逊、字节跳动在半年内面试常考）
- * leetcode-021 | 
+ * easy | leetcode-021 | link-list
  * https://leetcode-cn.com/problems/merge-two-sorted-lists/
+ * 思路： 类似归并排序的归并过程
  */
 var mergeTwoLists = function(l1, l2) {
-
+  var dummyHead = {val: -1, next: null}, p = dummyHead
+  while(l1 && l2) {
+      if (l1.val <= l2.val) {
+          p.next = l1
+          l1 = l1.next
+      } else {
+          p.next = l2
+          l2 = l2.next
+      }
+      p = p.next
+  }
+  p.next = l1 || l2
+  return dummyHead.next
 };
 
 /**
  * 6. 合并两个有序数组（Facebook 在半年内面试常考）
- * leetcode-088 |
+ * easy | leetcode-088 | array
  * https://leetcode-cn.com/problems/merge-sorted-array/
  */
 var merge = function(nums1, m, nums2, n) {
-
+  var i = m - 1, j = n - 1, k = m + n - 1
+  while (i >= 0 && j >= 0) {
+    if (nums1[i] > nums2[j]) {
+      nums1[k--] = nums1[i--]
+    } else {
+      nums1[k--] = nums2[j--]
+    }
+  }
+  while(j >= 0) {
+    nums1[k--] = nums2[j--]
+  }
+  return nums1
 };
 
 
@@ -48,25 +72,56 @@ var merge = function(nums1, m, nums2, n) {
  * https://leetcode-cn.com/problems/two-sum/
  */
 var twoSum = function (nums, target) {
-
+  var hashMap = {}
+  for (var i = 0; i < nums.length; ++i) {
+    if (hashMap[nums[i]] === void(0)) {
+      hashMap[target- nums[i]] = i
+    } else {
+      return [hashMap[nums[i]], i]
+    }
+  }
+  return []
 };
 
 /**
  * 8. 移动零（Facebook、亚马逊、苹果在半年内面试中考过）
  * leetcode-283 |
  * https://leetcode-cn.com/problems/move-zeroes/
+ * 思路： 用一个标记记录非0的位置
  */
 var moveZeroes = function(nums) {
+  var swap = function(nums, i, j) {
+      var tmp = nums[i]
+      nums[i] = nums[j]
+      nums[j] = tmp
+  }
 
+for (var i = 0, j = 0; i < nums.length; ++i) {
+  if (nums[i] !== 0) {
+    swap(nums, i, j++)
+  }
+}
+return nums
 };
 
 /**
  * 9. 加一（谷歌、字节跳动、Facebook 在半年内面试中考过）
- * leetcode-066 |
+ * easy | leetcode-066 | array
  * https://leetcode-cn.com/problems/plus-one/
  */
 var plusOne = function(digits) {
-
+  for (var i = digits.length - 1; i >= 0; --i) {
+      if (digits[i] < 9) {
+          ++digits[i]
+          break
+      } else {
+          digits[i] = 0
+          if (i === 0) {
+              digits.unshift(1)
+          }
+      }
+  }
+  return digits
 };
 
 /**
