@@ -156,43 +156,88 @@ var plusOne = function(digits) {
 
 /**
  * 10. 设计循环双端队列（Facebook 在 1 年内面试中考过）
- * leetcode-641 |
+ * medium | leetcode-641 | deque
  * https://leetcode-cn.com/problems/design-circular-deque/?utm_source=LCUS&utm_medium=ip_redirect&utm_campaign=transfer2china
+ * 思路： js的array完全是超集，约束下 length 可以很简单实现
  */
 var MyCircularDeque = function(k) {
-
+  this.queue =  new Array()
+  this.length = k
 };
-MyCircularDeque.prototype.insertFront = function(value) {
 
+MyCircularDeque.prototype.insertFront = function(value) {
+  if (this.queue.length < this.length) {
+      this.queue.unshift(value)
+      return true
+  }
+  return false
 };
 MyCircularDeque.prototype.insertLast = function(value) {
-
+  if (this.queue.length < this.length) {
+      this.queue.push(value)
+      return true
+  }
+  return false
 };
 MyCircularDeque.prototype.deleteFront = function() {
-
+  if (this.queue.length > 0) {
+      this.queue.shift()
+      return true
+  }
+  return false
 };
 MyCircularDeque.prototype.deleteLast = function() {
-
+  if (this.queue.length > 0) {
+      this.queue.pop()
+      return true
+  }
+  return false
 };
 MyCircularDeque.prototype.getFront = function() {
-
+  if (this.queue.length === 0) {
+      return -1
+  }
+  return this.queue[0]
 };
 MyCircularDeque.prototype.getRear = function() {
-
+  if (this.queue.length === 0) {
+      return -1
+  }
+  return this.queue[this.queue.length - 1]
 };
 MyCircularDeque.prototype.isEmpty = function() {
-
+  return this.queue.length === 0
 };
 MyCircularDeque.prototype.isFull = function() {
-
+  return this.queue.length === this.length
 };
 
 
 /**
  * 11. 接雨水（亚马逊、字节跳动、高盛集团、Facebook 在半年内面试常考）
- * leetcode-042 |
+ * hard ｜ leetcode-042 | array
  * https://leetcode.com/problems/trapping-rain-water/
+ * 思路： maxLeft、maxRight 记录左右最高柱子
  */
-var trap = function(height) {
-    
+var trap = function(A) {
+  var left = 0, right = A.length - 1
+  var res = 0, maxLeft = 0, maxRight = 0
+  while (left < right) {
+      if (A[left] <= A[right]) {
+          if (A[left] >= maxLeft) {
+              maxLeft = A[left]
+          } else {
+              res += maxLeft - A[left]
+          }
+          ++left
+      } else {
+          if (A[right] >= maxRight) {
+              maxRight = A[right]
+          } else {
+              res += maxRight - A[right]
+          }
+          --right
+      }
+  }
+  return res
 };
