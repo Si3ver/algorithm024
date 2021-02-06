@@ -1,4 +1,21 @@
 # 学习笔记
+
+## 听课笔记
+
+> [Java.util.ArrayList](http://developer.classpath.org/doc/java/util/ArrayList-source.html)
+> [Java.util.LinkedList](http://developer.classpath.org/doc/java/util/LinkedList-source.html)
+
+**时间复杂度**
+
+备注：skiplist 是有序的，实现简单，维护成本较高，空间复杂度O(n)。
+
+ array | linkedlist | skiplist
+prepend O(1) O(1) O(1)
+append O(1) O(1) O(1)
+lookup O(1) O(n) O(logn)
+insert O(n) O(1) O(logn)
+delete O(n) O(1) O(logn)
+
 ## 作业
 
 **easy**
