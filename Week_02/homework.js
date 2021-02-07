@@ -1,6 +1,7 @@
 /**
  * 1. 写一个关于HashMap的小总结
- * TODO
+ * https://time.geekbang.org/column/article/64233
+ * 解决散列冲突：1. 开放寻址法（线性探测） 2. 拉链法
  */
 
 /**
@@ -96,7 +97,10 @@ var preorder = function (root) {
 /**
  * 5. HeapSort
  * 自学 https://www.geeksforgeeks.org/heap-sort/
- * 
+ * 时间复杂度 O(nlogn), 稳定的原地排序
+ * https://time.geekbang.org/column/article/69913
+ * Step1: 建堆
+ * Step2: 排序
  */
 
 /**
