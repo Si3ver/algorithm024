@@ -101,8 +101,40 @@ var preorder = function (root) {
 
 /**
  * 6. 字母异位词分组（亚马逊在半年内面试中常考）
- * 
+ * https://leetcode-cn.com/problems/group-anagrams/
+ * medium | leetcode 049
  */
+/**
+ * @param {string[]} strs
+ * @return {string[][]}
+ * 思路：记录到哈希表中，key值为统计数组toString，value值为字符串数组。最后返回 map 所有的values
+ */
+/**
+ * @param {string[]} strs
+ * @return {string[][]}
+ * 思路：记录到哈希表中，key值为统计数组toString，value值为字符串数组。最后返回 map 所有的values
+ */
+var groupAnagrams = function(strs) {
+  if (!Object.prototype.toString.apply(strs) === '[object Array]'
+    || strs.length < 1
+  ) {
+    return []
+  }
+
+  var map = {}
+  strs.forEach(str => {
+    var arr = Array(26).fill(0)
+    str.split('').forEach(ch => {
+      ++arr[ch.charCodeAt(0) - 'a'.charCodeAt(0)]
+    })
+    if (map[arr.toString()] === void(0)) {
+      map[arr.toString()] = [str]
+    } else {
+      map[arr.toString()].push(str)
+    }
+  })
+  return Object.values(map)
+};
 
 /**
  * 7. 二叉树的中序遍历（亚马逊、字节跳动、微软在半年内面试中考过）
