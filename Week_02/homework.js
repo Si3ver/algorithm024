@@ -109,9 +109,9 @@ var preorder = function (root) {
  * https://leetcode-cn.com/problems/binary-tree-inorder-traversal/
  * leetcode-94
  */
-var inorderTraversal = function(root) {
-  var res = []
-  ;(function(root) {
+var inorderTraversal = function (root) {
+  var res = [];
+  (function (root) {
     if (root !== null) {
       arguments.callee(root.left)
       res.push(root.val)
@@ -126,9 +126,9 @@ var inorderTraversal = function(root) {
  * https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
  * leetcode-144
  */
-var preorderTraversal = function(root) {
-  var res = []
-  ;(function(root) {
+var preorderTraversal = function (root) {
+  var res = [];
+  (function (root) {
     if (root !== null) {
       res.push(root.val)
       arguments.callee(root.left)
@@ -143,21 +143,22 @@ var preorderTraversal = function(root) {
  * https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/submissions/
  * easy | leetcode-590
  */
-var postorder = function(root) {
-  var res = []
-  ;(function(root) {
-      if (root !== null) {
-          root.children.forEach(child => {
-              arguments.callee(child)
-          })
-          res.push(root.val)
-      }
+var postorder = function (root) {
+  var res = [];
+  (function (root) {
+    if (root !== null) {
+      root.children.forEach(child => {
+        arguments.callee(child)
+      })
+      res.push(root.val)
+    }
   })(root)
   return res
 };
 
 /**
  * 10. 丑数（字节跳动在半年内面试中考过）
+ * https://leetcode-cn.com/problems/ugly-number/
  * medium | leetcode-
  */
 
