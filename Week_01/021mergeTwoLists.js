@@ -1,4 +1,9 @@
 /**
+ * easy | leetcode-021 | link-list
+ * https://leetcode-cn.com/problems/merge-two-sorted-lists/
+ * 思路： 类似归并排序的归并过程
+ */
+/**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
  *     this.val = (val===undefined ? 0 : val)
