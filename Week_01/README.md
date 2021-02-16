@@ -9,7 +9,7 @@
 
 备注：skiplist 是有序的，实现简单，维护成本较高，空间复杂度O(n)。
 
- array | linkedlist | skiplist
+array | linkedlist | skiplist
 prepend O(1) O(1) O(1)
 append O(1) O(1) O(1)
 lookup O(1) O(n) O(logn)
