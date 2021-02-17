@@ -6,21 +6,25 @@
  *     this.right = (right===undefined ? null : right)
  * }
  * https://leetcode-cn.com/problems/invert-binary-tree/submissions/
- * 1. 边界条件
- * 2. 交换
- * 3. 递归处理子问题
- * 4. return
+ * 1. terminator
+ * 2. process
+ * 3. drill down
+ * 4. reverse states
  */
 /**
  * @param {TreeNode} root
  * @return {TreeNode}
  */
 var invertTree = function(root) {
+  // terminator
   if (!root) return null
+  // process
   var tmp = root.left
   root.left = root.right
   root.right = tmp
+  // drill down
   invertTree(root.left)
   invertTree(root.right)
+  // reverse states
   return root
 };
