@@ -15,16 +15,16 @@
  * @param {TreeNode} root
  * @return {TreeNode}
  */
-var invertTree = function(root) {
+const invertTree = function(root) {
   // terminator
-  if (!root) return null
+  if (root == null) return root
   // process
-  var tmp = root.left
+  const tmp = root.left
   root.left = root.right
   root.right = tmp
   // drill down
   invertTree(root.left)
   invertTree(root.right)
-  // reverse states
+  // revert states
   return root
-};
+}
