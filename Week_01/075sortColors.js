@@ -14,14 +14,8 @@ const sortColors = function(nums) {
     arr[i] = arr[j]
     arr[j] = tmp
   }
-  let l = 0, r = nums.length - 1, i = 0
-  while(i <= r) {
-    if (nums[i] === 0) {
-      swap(nums, i++, l++)
-    } else if (nums[i] === 2) {
-      swap(nums, i, r--)
-    } else {
-      ++i
-    }
+  for(let i = 0, l = 0, r = nums.length - 1; i <= r; ++i) {
+    while(nums[i] === 2 && i < r) swap(nums, i, r--)
+    while(nums[i] === 0 && i > l) swap(nums, i, l++)
   }
 }
