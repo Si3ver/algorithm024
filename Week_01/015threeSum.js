@@ -34,7 +34,13 @@ let threeSum2 = function (nums) {
 
 console.log('solution 1: ', threeSum2([-1, 0, 1, 2, -1, -4]))
 
-// 解法3 O(n^2)
+/**
+ * 解法3 O(n^2)
+ * 思路： 
+ * 1. 先排序
+ * 2. 外层循环k，左右双指针夹逼。挪动去重
+ */
+
 const threeSum = function (nums) {
   if (Object.prototype.toString.apply(nums) !== '[object Array]' || nums.length < 3) return []
   nums.sort((a, b) => a - b)

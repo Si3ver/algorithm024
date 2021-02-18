@@ -30,12 +30,11 @@ console.log(maxArea1([1,2,1]))
 
 // 解法二： O(n)
 const maxArea = function(a) {
-  if (Object.prototype.toString.apply(a) !== '[object Array]'
-      || a.length < 2) return 0
-  let max = 0
-  for(let i = 0, j = a.length - 1; i < j;) {
-    const minHeight = a[i] < a[j] ? a[i++] : a[j--]
-    const area = (j - i + 1) * minHeight
+  if (Object.prototype.toString.call(a) !== '[object Array]' || a.length < 2) return 0
+  let max = 0, l = 0, r = a.length - 1
+  while(l < r) {
+    const minHeight = a[l] < a[r] ? a[l++] : a[r--]
+    const area = minHeight * (r - l + 1)
     max = Math.max(max, area)
   }
   return max

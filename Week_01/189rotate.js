@@ -10,16 +10,19 @@
 //     return nums
 // };
 // O(1)空间复杂度解法： 反转3次
-var rotate = function(nums, k) {
-  var reverse = function(nums, start, end) {
-      while(start < end) {
-          var tmp = nums[start]
-          nums[start++] = nums[end]
-          nums[end--] = tmp
-      }
+const rotate = function(nums, k) {
+  if (Object.prototype.toString.call(nums) !== '[object Array]' || nums.length < 2) return
+
+  const reverse = (nums, start, end) => {
+    while(start < end) {
+      const tmp = nums[start]
+      nums[start++] = nums[end]
+      nums[end--] = tmp
+    }
   }
+
   k %= nums.length
   reverse(nums, 0, nums.length - 1)
   reverse(nums, 0, k - 1)
   reverse(nums, k, nums.length - 1)
-};
+}

@@ -1,15 +1,16 @@
 /**
+ * https://leetcode-cn.com/problems/climbing-stairs/
  * 思路：fibnacci数列
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function(n) {
-  if (n < 3) return n
-  var p1 = 1, p2 = 2, p3 = 3
-  while(n-- > 3) {
-    p1 = p2
-    p2 = p3
-    p3 = p1 + p2
+const climbStairs = function(n) {
+  if (n <= 3) return n
+  let a = 2, b = 3, c
+  for(let i = 4; i <= n; ++i) {
+    c = a + b
+    a = b
+    b = c
   }
-  return p3
-};
+  return c
+}
