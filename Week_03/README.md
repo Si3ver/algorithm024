@@ -4,10 +4,10 @@
 
 **递归模版**
 
-1. terminator
-2. process
-3. drill down
-4. revert states
+1. 递归终结条件 recursion terminator
+2. 处理当前层逻辑 process logic in current level
+3. 下探到下一层 drill down
+4. 清理当前层 revere the current level status if needed
 
 ## 第8课：分治、回溯
 
