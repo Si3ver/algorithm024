@@ -9,13 +9,18 @@
  */
 
 const sortColors = function(nums) {
-  const swap = function(arr, i, j) {
-    const tmp = arr[i]
-    arr[i] = arr[j]
-    arr[j] = tmp
+  if (Object.prototype.toString.call(nums) !== '[object Array]') return
+
+  const swap = (nums, l, r) => {
+    if (l !== r) {
+      const tmp = nums[l]
+      nums[l] = nums[r]
+      nums[r] = tmp
+    }
   }
-  for(let i = 0, l = 0, r = nums.length - 1; i <= r; ++i) {
-    while(nums[i] === 2 && i < r) swap(nums, i, r--)
-    while(nums[i] === 0 && i > l) swap(nums, i, l++)
+
+  for (let i = 0, l = 0, r = nums.length - 1; i < nums.length; ++i) {
+    while(i < r && nums[i] === 2) swap(nums, i, r--)
+    while(i > l && nums[i] === 0) swap(nums, i, l++)
   }
 }
