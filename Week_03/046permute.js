@@ -19,7 +19,7 @@ const permute = function(nums) {
       const val = part[i]
       part.splice(i, 1)
       path.push(val)
-      helper(path.slice(), part.slice())
+      helper(path, part)
       path.pop()
       part.splice(i, 0, val)
     }
