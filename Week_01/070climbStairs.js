@@ -5,7 +5,7 @@
  * @return {number}
  */
 const climbStairs = function(n) {
-  if (n <= 3) return n
+  if (typeof n !== 'number' || n < 4) return n
   let a = 2, b = 3, c
   for(let i = 4; i <= n; ++i) {
     c = a + b
