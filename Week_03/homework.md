@@ -2,20 +2,25 @@
 
 ## 1. 二叉树的最近公共祖先（Facebook 在半年内面试常考）
 
-[实现代码](./236lowestCommonAncestor.js)
++ recursion
++ [实现代码](./236lowestCommonAncestor.js)
 
 ## 2. 从前序与中序遍历序列构造二叉树（字节跳动、亚马逊、微软在半年内面试中考过）
 
-[实现代码](./105buildTree.js)
++ recursion
++ [实现代码](./105buildTree.js)
 
 ## 3. 组合（微软、亚马逊、谷歌在半年内面试中考过）
 
-[实现代码](./077combine.js)
++ backtrack
++ [实现代码](./077combine.js)
 
 ## 4. 全排列（字节跳动在半年内面试常考）
 
-[实现代码](./046permute.js)
++ backtrack
++ [实现代码](./046permute.js)
 
 ## 5. 全排列 II （亚马逊、字节跳动、Facebook 在半年内面试中考过）
 
-[实现代码](./047permuteUnique.js)
++ backtrack
++ [实现代码](./047permuteUnique.js)

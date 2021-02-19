@@ -40,3 +40,6 @@ const divide_conquer = (problem, params) => {
 
 **回溯（backtracing）**
 
+1. 走一步
+2. 递归调用
+3. 恢复
