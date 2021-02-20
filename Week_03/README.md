@@ -38,7 +38,7 @@ const divide_conquer = (problem, params) => {
 }
 ```
 
-**回溯（backtracing）**
+**回溯（backtraking）**
 
 1. 走一步
 2. 递归调用
