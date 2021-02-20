@@ -1,31 +1,27 @@
 /**
  * https://leetcode-cn.com/problems/permutations/
- * 思路1：回溯
- * 利用splice 和 slice拷贝，性能较差
+ * 思路：分治 + 回溯
  * 
  * @param {number[]} nums
  * @return {number[][]}
  */
 const permute = function(nums) {
+  if (Object.prototype.toString.call(nums) !== '[object Array]' || nums.length < 1) return []
   const res = []
-
-  const helper = (path, part) => {
-    // console.log("🚀 ~ helper", path, part)
-    if (path.length >= nums.length) {
+  const dfs = (path, list) => {
+    if (path.length >= nums.length) { // terminator
       res.push(path.slice())
       return
     }
-    for(let i = 0; i < part.length; ++i) {
-      const val = part[i]
-      part.splice(i, 1)
+    for(let i = 0; i < list.length; ++i) {
+      const [val] = list.splice(i, 1)
       path.push(val)
-      helper(path, part)
-      path.pop()
-      part.splice(i, 0, val)
+      dfs(path, list) // process & dirll down
+      path.pop()  // revert states
+      list.splice(i, 0, val)
     }
   }
-
-  helper([], nums.slice())
+  dfs([], nums.slice())
   return res
 }
 
