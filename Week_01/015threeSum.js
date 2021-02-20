@@ -41,25 +41,24 @@ console.log('solution 1: ', threeSum2([-1, 0, 1, 2, -1, -4]))
  * 2. 外层循环k，左右双指针夹逼。挪动去重
  */
 
-const threeSum = function (nums) {
-  if (Object.prototype.toString.apply(nums) !== '[object Array]' || nums.length < 3) return []
-  nums.sort((a, b) => a - b)
+const threeSum = function(nums) {
+  if (Object.prototype.toString.call(nums) !== '[object Array]' || nums.length < 3) return []
+  nums.sort((x, y) => x - y)  // O(nlogn)
   const res = []
-  for (let k = 0; k < nums.length - 2; ++k) {
-    if (nums[k] > 0) break
-    if (k > 0 && nums[k] === nums[k - 1]) continue
-    let i = k + 1,
-      j = nums.length - 1
-    while (i < j) {
-      const sum = nums[k] + nums[i] + nums[j]
+  for(let k = 0; k < nums.length - 2; ++k) {
+    if (nums[k] > 0) break  // prun
+    if (k > 0 && nums[k] === nums[k-1]) continue  // unique
+    let l = k + 1, r = nums.length - 1
+    while(l < r) {
+      const sum = nums[k] + nums[l] + nums[r]
       if (sum < 0) {
-        while (i < j && nums[i] === nums[++i]) {}
+        while(l < r && nums[l] === nums[++l]) {}  // unique
       } else if (sum > 0) {
-        while (i < j && nums[j] === nums[--j]) {}
+        while(l < r && nums[r] === nums[--r]) {}  // unique
       } else {
-        res.push([nums[k], nums[i], nums[j]])
-        while (i < j && nums[i] === nums[++i]) {} // 指针移动顺便去重
-        while (i < j && nums[j] === nums[--j]) {} // 指针移动顺便去重
+        res.push([nums[k], nums[l], nums[r]])
+        while(l < r && nums[l] === nums[++l]) {}  // unique
+        while(l < r && nums[r] === nums[--r]) {}  // unique
       }
     }
   }
