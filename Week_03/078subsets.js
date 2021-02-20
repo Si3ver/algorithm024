@@ -1,6 +1,6 @@
 /**
  * https://leetcode-cn.com/problems/subsets/
- * 思路1：
+ * 思路1：【分治 + 回溯】
  * 分治，求子问题。每一步有两种情况，选or不选
  * 
  * @param {number[]} nums
@@ -8,9 +8,9 @@
  */
 const subsets = function(nums) {
   if (Object.prototype.toString.call(nums) !== '[object Array]' || nums.length < 1) return [[]]
-  const res = []
 
-  const dfs = (level, path) => {1
+  const res = []
+  const dfs = (level, path) => {
     // terminator
     if (level === nums.length) {
       res.push(path.slice())
@@ -30,7 +30,7 @@ const subsets = function(nums) {
 }
 
 
-// 思路2: 迭代
+// 思路2: 【迭代】
 const subsets2 = function(nums) {
   if (Object.prototype.toString.call(nums) !== '[object Array]' || nums.length < 1) return [[]]
 
