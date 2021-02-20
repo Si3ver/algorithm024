@@ -10,19 +10,19 @@ const subsets = function(nums) {
   if (Object.prototype.toString.call(nums) !== '[object Array]' || nums.length < 1) return [[]]
   const res = []
 
-  const dfs = (index, list) => {1
+  const dfs = (level, path) => {1
     // terminator
-    if (index === nums.length) {
-      res.push(list.slice())
+    if (level === nums.length) {
+      res.push(path.slice())
       return
     }
     // process1: not pick
-    dfs(index + 1, list)
+    dfs(level + 1, path)
     // process2: pick
-    list.push(nums[index])
-    dfs(index + 1, list)
+    path.push(nums[level])
+    dfs(level + 1, path)
     // revert states
-    list.pop()
+    path.pop()
   }
 
   dfs(0, [])
