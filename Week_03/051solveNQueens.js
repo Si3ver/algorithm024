@@ -1,13 +1,40 @@
 /**
  * https://leetcode-cn.com/problems/n-queens/
- * 分治 & 回溯
+ * 【DFS 递归搜索 + 剪枝】
  * 
  * 
  * @param {number} n
  * @return {string[][]}
  */
 const solveNQueens = function(n) {
-  if (n < 1 || n > 4) return [[]]
+  if (n < 1) return [[]]
+
+  const result = [],
+        cols = new Set(),
+        pie = new Set(),  // 撇
+        na = new Set()  // 捺
+
+  const dfs = (i, curState) => {
+    // terminator
+    if (i >= n) {
+      result.push(curState)
+      return
+    }
+    // process
+    for(let j = 0; j < n; ++j) {
+      if (cols.has(j) || pie.has(i + j) || na.has(i - j))
+        continue
+      // drill down
+      cols.add(j)
+      pie.add(i + j)
+      na.add(i - j)
+      dfs(i + 1, curState.concat([j]))
+      // revert states
+      cols.delete(j)
+      pie.delete(i + j)
+      na.delete(i - j)
+    }
+  }
 
   // 把 result 转换成题目要求的格式
   const generateResult = (result) => {
@@ -23,27 +50,17 @@ const solveNQueens = function(n) {
     return board
   }
 
-  const result = {
-    1: [
-      [0]
-    ],
-    2: [],
-    3: [],
-    4: [
-      [1, 3, 0, 2],
-      [2, 0, 3, 1],
-    ]
-  }
-  return generateResult(result[n])
+  dfs(0, [])
+  return generateResult(result)
 }
 
 
 // ---- test case ----
-console.log(solveNQueens(0))
-console.log(solveNQueens(1))
-console.log(solveNQueens(2))
-console.log(solveNQueens(3))
-console.log(solveNQueens(4))
+new Array(10).fill(0).forEach((item, idx) => {
+  const g = solveNQueens(idx)
+  console.log(`---- ${idx}, 共${g.length}种解法 ----`)
+  // console.log(g)
+})
 
 /*
 输入： n = 4

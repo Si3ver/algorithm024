@@ -1,6 +1,8 @@
 /**
  * https://leetcode-cn.com/problems/get-kth-magic-number-lcci/
  * 
+ * 思路：三指针法
+ * 
  * 1, 3, 5, 7, 9, 15, 21, 35, 49, 
  * 
  * 推导公式：f(n) = min(3f(p3), 5f(p5), 7f(p7))
@@ -21,7 +23,7 @@ const getKthMagicNumber = function(k) {
   return nums[k - 1]
 }
 
-// test case
+// ---- test case ----
 new Array(20).fill(0).forEach((item, idx) => {
   console.log(`${idx + 1}: ` + getKthMagicNumber(idx + 1))
 })
