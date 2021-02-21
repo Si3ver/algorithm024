@@ -23,14 +23,19 @@ const dfs_wrap = (root)  => {
 + 手动维护stack
 
 ```js
+/**
+ * 非递归的深搜，手动维护stack (push / pop)
+ * 因为stack的 FILO 特点，要注意先入右子，再入左子
+ * 
+ */
 const dfs = (root) => {
+  if (root == null) return []
   const res = [], stack = [root]
   while(stack.length > 0) {
     const p = stack.pop()
-    if (p == null) continue
+    if(p.right != null) stack.push(p.right)
+    if(p.left  != null) stack.push(p.left)
     res.push(p.val)
-    stack.push(p.right)
-    stack.push(p.left)
   }
   return res
 }
@@ -42,13 +47,13 @@ const dfs = (root) => {
 
 ```js
 const bfs = (root) => {
+  if (root == null) return []
   const res = [], queue = [root]
   while(queue.length > 0) {
     const p = queue.pop()
-    if (p == null) continue
+    if(p.left  != null) queue.unshift(p.left)
+    if(p.right != null) queue.unshift(p.right)
     res.push(p.val)
-    queue.unshift(p.left)
-    queue.unshift(p.right)
   }
   return res
 }
