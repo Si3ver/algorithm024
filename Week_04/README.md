@@ -5,12 +5,16 @@
 ***DFS(递归版)**
 
 ```js
-const res = []
-const dfs = (root) => {
-  if (root == null) return
-  res.push(root.val)
-  dfs(root.left)
-  dfs(root.right)
+const dfs_wrap = (root)  => {
+  const dfs_recur = (root) => {
+    if (root == null) return
+    res.push(root.val)
+    dfs_recur(root.left)
+    dfs_recur(root.right)
+  }
+  const res = []
+  dfs_recur(root)
+  return res
 }
 ```
 
@@ -20,14 +24,13 @@ const dfs = (root) => {
 
 ```js
 const dfs = (root) => {
-  if (root == null) return []
-
   const res = [], stack = [root]
   while(stack.length > 0) {
     const p = stack.pop()
+    if (p == null) continue
     res.push(p.val)
-    stack.push(p.left)
     stack.push(p.right)
+    stack.push(p.left)
   }
   return res
 }
@@ -39,15 +42,15 @@ const dfs = (root) => {
 
 ```js
 const bfs = (root) => {
-  if (root == null) return []
-
   const res = [], queue = [root]
   while(queue.length > 0) {
     const p = queue.pop()
+    if (p == null) continue
     res.push(p.val)
-    res.unshift(p.left)
-    res.unshift(p.right)
+    queue.unshift(p.left)
+    queue.unshift(p.right)
   }
+  return res
 }
 ```
 

@@ -1,3 +1,15 @@
+const dfs_wrap = (root)  => {
+  const dfs_recur = (root) => {
+    if (root == null) return
+    res.push(root.val)
+    dfs_recur(root.left)
+    dfs_recur(root.right)
+  }
+  const res = []
+  dfs_recur(root)
+  return res
+}
+
 const dfs = (root) => {
   const res = [], stack = [root]
   while(stack.length > 0) {
@@ -15,9 +27,7 @@ const bfs = (root) => {
   while(queue.length > 0) {
     const p = queue.pop()
     if (p == null) continue
-
     res.push(p.val)
-
     queue.unshift(p.left)
     queue.unshift(p.right)
   }
@@ -26,39 +36,37 @@ const bfs = (root) => {
 
 
 // ---- test case ----
-function TreeNode(val, left, right) {
-  this.val = (val===undefined ? 0 : val)
-  this.left = (left===undefined ? null : left)
-  this.right = (right===undefined ? null : right)
+function TreeNode(val) {
+  this.val = val
+  this.left = null
+  this.right = null
 }
 
-const buildTree = function(preorder, inorder) {
-  const helper = (preorder, pStart, pEnd, inorder, iStart, iEnd) => {
-    // terminator
-    if (pStart === pEnd) {
-      return null
-    }
-    // process [rootValue -> iRootIdx -> leftSize]
-    const rootValue = preorder[pStart], root = new TreeNode(rootValue)
-    let iRootIdx = 0
-    for(let i = 0; i < inorder.length; ++i) {
-      if (inorder[i] === rootValue) {
-        iRootIdx = i
-        break
-      }
-    }
-    const leftSize = iRootIdx - iStart
-    // drill down
-    root.left = helper(preorder, pStart + 1, pStart + leftSize + 1, inorder, iStart, iRootIdx)
-    root.right = helper(preorder, pStart + leftSize + 1, pEnd, inorder, iRootIdx + 1, iEnd)
-    // revert states
+const deserialize = function(data) {
+  const treeVals = data.split(',')
+
+  const buildTree = (list) => {
+    const rootVal = list.shift()
+    if (rootVal === 'X') return null
+    const root = new TreeNode(rootVal)
+    root.left = buildTree(list)
+    root.right = buildTree(list)
     return root
   }
-
-  return helper(preorder, 0, preorder.length, inorder, 0, inorder.length)
+  return buildTree(treeVals)
 }
 
-const t = buildTree([3,9,20,15,7], [9,3,15,20,7])
+/*
+      1
+   /     \
+  2       5
+ / \     /
+3   4   6
+   / \
+  8   9
+*/
+const t = deserialize('1,2,3,X,X,4,8,X,X,9,X,X,5,6,X,X,X')
 console.log(JSON.stringify(t, null, 2))
-console.log(bfs(t))
+console.log(dfs_wrap(t))
 console.log(dfs(t))
+console.log(bfs(t))
