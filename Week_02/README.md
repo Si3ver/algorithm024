@@ -59,3 +59,9 @@
 
 ## 第6课：堆和二叉堆、图
 
+**[heap](https://www.geeksforgeeks.org/heap-sort/)**
+
++ 时间复杂度 O(nlogn), 稳定的原地排序
++ https://time.geekbang.org/column/article/69913
++ Step1: 建堆
++ Step2: 排序

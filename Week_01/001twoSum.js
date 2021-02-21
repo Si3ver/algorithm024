@@ -5,6 +5,7 @@
  */
 
 const twoSum = function(nums, target) {
+  if (Object.prototype.toString.call(nums) !== '[object Array]' || nums.length < 2) return []
   const m = new Map()
   for(let i = 0; i < nums.length; ++i) {
     if (m.has(nums[i])) {
