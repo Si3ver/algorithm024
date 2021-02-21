@@ -1,11 +1,10 @@
 /**
  * https://leetcode-cn.com/problems/n-queens/
- * 【DFS 递归搜索 + 剪枝】
- * 
- * 
  * @param {number} n
  * @return {string[][]}
  */
+
+// 解法一：【DFS 递归搜索 + 剪枝】
 const solveNQueens = function(n) {
   if (n < 1) return [[]]
 
@@ -54,6 +53,7 @@ const solveNQueens = function(n) {
   return generateResult(result)
 }
 
+// TODO 解法二：位运算
 
 // ---- test case ----
 new Array(10).fill(0).forEach((item, idx) => {
