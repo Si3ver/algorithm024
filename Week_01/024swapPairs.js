@@ -1,16 +1,10 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
 /** 
+ * https://leetcode-cn.com/problems/swap-nodes-in-pairs/
  * 24. 两两交换链表中的节点
- * 思路1: 递归
- * @param {ListNode} head
- * @return {ListNode}
+ * 
  */
+
+// 思路1: 递归
 var swapPairs = function(head) {
   if (!head || !head.next) {
     return head
@@ -21,18 +15,7 @@ var swapPairs = function(head) {
   return newHead
 };
 
-
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/** 思路2: 空指针头画图
- * @param {ListNode} head
- * @return {ListNode}
- */
+// 思路2: 非递归（空指针头）
 var swapPairs = function(head) {
   var dummy = { val: -1, next: head }, cur = dummy
   while(cur.next && cur.next.next) {

@@ -1,20 +1,11 @@
 /**
- * easy | leetcode-021 | link-list
  * https://leetcode-cn.com/problems/merge-two-sorted-lists/
- * 思路： 类似归并排序的归并过程
+ * easy | leetcode-021 | link-list
  */
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
+
 /** 
- * @param {ListNode} l1
- * @param {ListNode} l2
- * @return {ListNode}
  * 21. 合并两个有序链表
+ * 思路： 类似归并排序的归并过程
  * 思路： 声明一个空指针头，遍历l1 和 l2，谁的值比较小就把谁拼接在后面
  */
 var mergeTwoLists = function (l1, l2) {

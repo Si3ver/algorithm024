@@ -1,11 +1,13 @@
 /**
- * 015 三数之和 medium
  * https://leetcode.com/problems/3sum/
+ * 015 三数之和 medium
+ * 
  * 思路：
  * 1. 暴力，三重循环（O(n^3)超时）
  * 2. hash，两重暴力 + hash
  * 3. 夹逼，因为不需要给下标，先排序后夹逼
  */
+
 // 解法2 O(n^2)
 // trick: 用set 和 JSON.stringify 去重
 let threeSum2 = function (nums) {

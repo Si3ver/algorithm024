@@ -1,13 +1,10 @@
 /**
- * @param {number[]} nums
- * @return {void} Do not return anything, modify nums in-place instead.
- */
-/**
- * medium
  * https://leetcode-cn.com/problems/sort-colors/
- * 思路：双指针夹逼，维护l指针左边全是0，r指针右边全是2
+ * medium
+ * 
  */
 
+// 思路：双指针夹逼，维护l指针左边全是0，r指针右边全是2
 const sortColors = function(nums) {
   if (Object.prototype.toString.call(nums) !== '[object Array]') return
 

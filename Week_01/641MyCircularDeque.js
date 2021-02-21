@@ -1,7 +1,7 @@
 /**
+ * https://leetcode-cn.com/problems/design-circular-deque/?utm_source=LCUS&utm_medium=ip_redirect&utm_campaign=transfer2china
  * 10. 设计循环双端队列（Facebook 在 1 年内面试中考过）
  * medium | leetcode-641 | deque
- * https://leetcode-cn.com/problems/design-circular-deque/?utm_source=LCUS&utm_medium=ip_redirect&utm_campaign=transfer2china
  * 思路： js的array完全是超集，约束下 length 可以很简单实现
  */
 
