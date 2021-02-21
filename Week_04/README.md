@@ -2,7 +2,7 @@
 
 ## 第9课：深度优先搜索和广度优先搜索
 
-***DFS(递归版)**
+**DFS(递归版)**
 
 ```js
 const dfs_wrap = (root)  => {
@@ -18,7 +18,7 @@ const dfs_wrap = (root)  => {
 }
 ```
 
-***DFS(非递归版)**
+**DFS(非递归版)**
 
 + 手动维护stack
 
@@ -36,7 +36,7 @@ const dfs = (root) => {
 }
 ```
 
-***BFS**
+**BFS**
 
 + 手动维护queue
 
