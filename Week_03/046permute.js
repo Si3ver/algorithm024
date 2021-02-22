@@ -7,24 +7,27 @@
  */
 const permute = function(nums) {
   if (Object.prototype.toString.call(nums) !== '[object Array]' || nums.length < 1) return []
-  const res = []
-  const dfs = (path, list) => {
-    if (path.length >= nums.length) { // terminator
+  const dfs = (path, remain) => {
+    // terminator
+    if (remain.length === 0) {
       res.push(path.slice())
       return
     }
-    for(let i = 0; i < list.length; ++i) {
-      const [val] = list.splice(i, 1)
+    for(let i = 0; i < remain.length; ++i) {
+      // process (choose one element of 【remain】 add into 【path】)
+      const [ val ] = remain.splice(i, 1)
       path.push(val)
-      dfs(path, list) // process & dirll down
-      path.pop()  // revert states
-      list.splice(i, 0, val)
+      // drill down
+      dfs(path, remain)
+      // revere states
+      path.pop()
+      remain.splice(i, 0, val)
     }
   }
-  dfs([], nums.slice())
+  const res = []
+  dfs([], nums)
   return res
 }
 
 // ---- test case ----
 console.log(permute([1,2,3]))
-
