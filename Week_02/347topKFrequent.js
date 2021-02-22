@@ -88,6 +88,7 @@ class PriorityQueue {
 
 // 解法二：利用heap O(nlogk)
 const topKFrequent = function(nums, k) {
+  // 1. 统计
   const m = {}, res = []
   for(let i = 0; i < nums.length; ++i) {
     if (m[nums[i]] !== void(0)) {
@@ -96,18 +97,19 @@ const topKFrequent = function(nums, k) {
       m[nums[i]] = 1
     }
   }
-  const mEntries = Object.entries(m)
+  // 2. 建堆，比较函数 v1 - v2 > 0（按次数降序）
   const pq = new PriorityQueue(
     ([_k1, v1], [_k2, v2]) => {return v1 - v2 > 0}
   )
-  mEntries.forEach(entry => {
+  // 3. 入堆
+  Object.entries(m).forEach(entry => {
     pq.push(entry)
-    // console.log(pq)
   })
+  // 4. 取堆顶 k 次
   for(let i = 0; i < k; ++i) {
-    // console.log(pq.peek())
     res.push(pq.pop())
   }
+  // 5. 取 key 构造结果
   return res.map(m => Number(m[0]))
 }
 
