@@ -113,6 +113,7 @@ const topKFrequent = function(nums, k) {
   return res.map(m => Number(m[0]))
 }
 
+// TODO 解法三：快排思想
 
 // ---- test case ----
 console.log(topKFrequent1([2,2,1,1,1,2,2,3], 2))
