@@ -1,22 +1,14 @@
 /**
  * https://leetcode-cn.com/problems/jump-game-ii/
  * 
- * 55. 跳跃游戏
+ * 45. 跳跃游戏 II
  * 
- * 思路： 从后往前贪心，依次判断第i个元素是否能到标记节点，能则记录更新 endReachable
  */
 
-const canJump = function(nums) {
-  if (Object.prototype.toString.call(nums) !== '[object Array]') return false
-  let endReachable = nums.length - 1
-  for(let i = nums.length - 2; i >= 0; --i) {
-    if (nums[i] + i >= endReachable) {
-      endReachable = i
-    }
-  }
-  return endReachable === 0
+const jump = function(nums) {
+  
 }
 
 // ---- test case ----
-console.log(canJump([]))
-console.log(canJump([0]))
+console.log(jump([]))
+console.log(jump([2,3,1,1,4]))
