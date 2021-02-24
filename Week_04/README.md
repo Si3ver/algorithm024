@@ -64,3 +64,22 @@ const bfs = (root) => {
 适用场景：问题能分解成子问题，子问题的最优解能递推到最终问题的最优解。【最优子结构】
 
 ## 第11课：二分查找
+
++ 适用于有序数组
+
+```js
+const binarySearch = function (arr, target) {
+  let l = 0, r = arr.length - 1
+  while (l <= r) {
+    const mid = (r - l) >> 1 + l
+    if (arr[mid] === target) {
+      return mid
+    } else if (arr[mid] < target) {
+      l = mid + 1
+    } else {
+      r = mid - 1
+    }
+  }
+  return -1
+}
+```
