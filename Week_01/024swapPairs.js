@@ -5,25 +5,28 @@
  */
 
 // 思路1: 递归
-var swapPairs = function(head) {
-  if (!head || !head.next) {
-    return head
-  }
-  var newHead = head.next, hnn = head.next.next
-  newHead.next = head
+const swapPairs = function(head) {
+  // terminator
+  if (!head || !head.next) return head
+  // process & drill down
+  let hn = head.next, hnn = hn.next
   head.next = swapPairs(hnn)
-  return newHead
-};
+  hn.next = head
+  // reverse status
+  return hn
+}
 
 // 思路2: 非递归（空指针头）
-var swapPairs = function(head) {
-  var dummy = { val: -1, next: head }, cur = dummy
-  while(cur.next && cur.next.next) {
-    var p1 = cur.next
-    var p2 = cur.next.next
-    p1.next = p2.next
-    cur.next = p2
-    p2.next = p1
+const swapPairs = function(head) {
+  const dummy = new ListNode(-1, head)
+  let prev = dummy
+  while (prev.next && prev.next.next) {
+    const curr = prev.next,
+          then = curr.next
+    curr.next = then.next
+    then.next = curr
+    prev.next = then
+    prev = curr
   }
   return dummy.next
-};
+}
