@@ -1,7 +1,9 @@
 /**
- * @param {number[]} nums
- * @return {number[][]}
+ * https://leetcode-cn.com/problems/permutations-ii/
+ * 
+ * 47. 全排列 II
  */
+
 const permuteUnique = function(nums) {
   const res = []
 
