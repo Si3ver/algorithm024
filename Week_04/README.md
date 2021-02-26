@@ -65,7 +65,10 @@ const bfs = (root) => {
 
 ## 第11课：二分查找
 
-+ 适用于有序数组
+**前提**
+1. 单调性
+2. 存在上下界
+3. 能通过索引访问
 
 ```js
 const binarySearch = function (arr, target) {
