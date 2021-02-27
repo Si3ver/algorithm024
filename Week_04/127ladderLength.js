@@ -1,12 +1,9 @@
 /**
  * https://leetcode-cn.com/problems/word-ladder/description/
  * hard
- * 
- * @param {string} beginWord
- * @param {string} endWord
- * @param {string[]} wordList
- * @return {number}
+ * 127. 单词接龙
  */
+
 const ladderLength = function(beginWord, endWord, wordList) {
 
 }
