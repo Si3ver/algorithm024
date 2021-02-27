@@ -1,26 +1,27 @@
 
 /**
- * https://leetcode-cn.com/problems/valid-perfect-square/
+ * https://leetcode-cn.csom/problems/valid-perfect-square/
  * 
  * 367. 有效的完全平方数
  */
 
-// 解法一：binarySearch
+// 解法一：binarySearch  O(logn)  效果优于解法二
 const isPerfectSquare = function(n) {
-  if (n === 0 || n === 1) return true
-  let l = 1, r = n
+  let l = 0, r = n
   while (l <= r) {
-    const mid = r + ((l - r) >> 1)
-    if (mid * mid > n) {
+    const mid = l + ((r - l) >> 1), val = mid * mid
+    if (val === n) {
+      return true
+    } else if (val > n) {
       r = mid - 1
     } else {
       l = mid + 1
     }
   }
-  return r * r === n
-}
+  return false
+} 
 
-// 解法二： 找规律，递推
+// 解法二： 找规律，循环减去一个奇数  O(sqrt(n))
 /**
  *  1
  *  4 = 1 + 3
@@ -35,12 +36,15 @@ const isPerfectSquare2 = function(n) {
     n -= x
     x += 2
   }
-  return n == 0
+  return n === 0
 }
 
 // ---- test case ----
+console.log(isPerfectSquare(0))
+console.log(isPerfectSquare(1))
 console.log(isPerfectSquare(14))
 console.log(isPerfectSquare(16))
+console.log(isPerfectSquare2(0))
+console.log(isPerfectSquare2(1))
 console.log(isPerfectSquare2(14))
 console.log(isPerfectSquare2(16))
-
