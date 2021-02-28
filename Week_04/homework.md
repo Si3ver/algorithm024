@@ -5,11 +5,10 @@
 + dfs & bfs
 + [实现代码](./127ladderLength.js)
 
-### 2. 单词接龙 II （微软、亚马逊、Facebook 在半年内面试中考过）
+### TODO 2. 单词接龙 II （微软、亚马逊、Facebook 在半年内面试中考过）
 
 + dfs & bfs
 + [实现代码](./126findLadders.js)
-
 ### 3. 岛屿数量（近半年内，亚马逊在面试中考查此题达到 350 次）
 
 + dfs & bfs
