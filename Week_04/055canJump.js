@@ -1,5 +1,5 @@
 /**
- * https://leetcode-cn.com/problems/jump-game-ii/
+ * https://leetcode-cn.com/problems/jump-game/
  * 
  * 55. 跳跃游戏
  * 
@@ -7,12 +7,10 @@
  */
 
 const canJump = function(nums) {
-  if (Object.prototype.toString.call(nums) !== '[object Array]') return false
+  if (!Array.isArray(nums)) return false
   let endReachable = nums.length - 1
-  for(let i = nums.length - 2; i >= 0; --i) {
-    if (nums[i] + i >= endReachable) {
-      endReachable = i
-    }
+  for (let i = nums.length - 2; i >= 0; --i) {
+    if (nums[i] + i >= endReachable) endReachable = i
   }
   return endReachable === 0
 }
