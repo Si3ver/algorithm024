@@ -27,7 +27,7 @@ const ladderLength = function (beginWord, endWord, wordList) {
   return 0
 }
 
-// 拓展：寻一种解法
+// 拓展：返回其中一条最短路径
 const findOnePath = function (beginWord, endWord, wordList) {
   const s = new Set(wordList),
         queue = [[1, [beginWord]]]
