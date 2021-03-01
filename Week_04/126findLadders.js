@@ -9,23 +9,25 @@
  * @return {string[][]}
  */
 
-// 解法一：BFS （不会写回溯就先用copy参数, 会超时。。。）
+// 解法一：BFS (要搜寻的情况太多，会超时！！！)
+// 难点在于要找到 “所有的最短路径”
+// 某测试用例中共有 51 条最短，全部搜出来很耗性能！！ 164708.968ms
 const findLadders1 = function (beginWord, endWord, wordList) {
   const res = [],
     queue = [
       [1, [beginWord], new Set(wordList)]
     ],
     alphabets = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  let minLevel = Infinity // 最短转换序列的长度
+  let minLevel = Infinity
   while (queue.length) {
     const [level, path, wordsSet] = queue.pop(),
       word = path[path.length - 1]
 
-    // console.log("🚀", path)
-    if (word === endWord) {
+    if (word === endWord && (minLevel === Infinity || level === minLevel)) {
       res.push(path.slice())
-      minLevel = Math.min(minLevel, level)
+      minLevel = level
     } else {
+      if (level >= minLevel) continue
       for (let i = 0; i < word.length; ++i) {
         for (const ch of alphabets) {
           const nextWord = word.slice(0, i) + ch + word.slice(i + 1)
@@ -37,7 +39,7 @@ const findLadders1 = function (beginWord, endWord, wordList) {
       }
     }
   }
-  return res.filter(path => path.length === minLevel)
+  return res
 }
 
 
@@ -115,4 +117,6 @@ var findLadders = function (beginWord, endWord, wordList) {
 // ---- test case ----
 // console.log(findLadders("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
 // console.log(findLadders("hit", "cog", ["hot", "dot", "dog", "lot", "log"]))
-console.log(findLadders("qa", "sq", ["si", "go", "se", "cm", "so", "ph", "mt", "db", "mb", "sb", "kr", "ln", "tm", "le", "av", "sm", "ar", "ci", "ca", "br", "ti", "ba", "to", "ra", "fa", "yo", "ow", "sn", "ya", "cr", "po", "fe", "ho", "ma", "re", "or", "rn", "au", "ur", "rh", "sr", "tc", "lt", "lo", "as", "fr", "nb", "yb", "if", "pb", "ge", "th", "pm", "rb", "sh", "co", "ga", "li", "ha", "hz", "no", "bi", "di", "hi", "qa", "pi", "os", "uh", "wm", "an", "me", "mo", "na", "la", "st", "er", "sc", "ne", "mn", "mi", "am", "ex", "pt", "io", "be", "fm", "ta", "tb", "ni", "mr", "pa", "he", "lr", "sq", "ye"]))
+console.time('findLadders1')
+console.log(findLadders1("qa", "sq", ["si", "go", "se", "cm", "so", "ph", "mt", "db", "mb", "sb", "kr", "ln", "tm", "le", "av", "sm", "ar", "ci", "ca", "br", "ti", "ba", "to", "ra", "fa", "yo", "ow", "sn", "ya", "cr", "po", "fe", "ho", "ma", "re", "or", "rn", "au", "ur", "rh", "sr", "tc", "lt", "lo", "as", "fr", "nb", "yb", "if", "pb", "ge", "th", "pm", "rb", "sh", "co", "ga", "li", "ha", "hz", "no", "bi", "di", "hi", "qa", "pi", "os", "uh", "wm", "an", "me", "mo", "na", "la", "st", "er", "sc", "ne", "mn", "mi", "am", "ex", "pt", "io", "be", "fm", "ta", "tb", "ni", "mr", "pa", "he", "lr", "sq", "ye"]))
+console.timeEnd('findLadders1')
