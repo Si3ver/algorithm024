@@ -13,21 +13,22 @@
  */
 
 const searchMatrix = function(matrix, target) {
-  const _getVal = (x) => {
-    const i = Math.floor(x/n)
-    const j = x % n
-    return matrix[i][j] 
+  const _getVal = (idx) => {
+    const x = Math.floor(idx / n)
+    const y = idx % n
+    return matrix[x][y]
   }
   const m = matrix.length, n = matrix[0].length
-  let l = 0, r = m * n - 1
-  while (l <= r) {
-    const mid = l + ((r - l) >> 1),
-          val = _getVal(mid)
-    if (val === target) return true
-    if (val > target) {
-      r = mid - 1
+  let lo = 0, hi = m * n - 1
+  while (lo <= hi) {
+    const mid = lo + ((hi - lo) >> 1)
+    const val = _getVal(mid)
+    if (val === target) {
+      return true
+    } else if (val > target){
+      hi = mid - 1
     } else {
-      l = mid + 1
+      lo = mid + 1
     }
   }
   return false
