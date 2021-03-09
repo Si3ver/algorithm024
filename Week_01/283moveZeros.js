@@ -3,7 +3,7 @@
  * 思路： 用一个标记记录非0的位置
  */
 
-const moveZeroes = function(nums) {
+const moveZeroes1 = function(nums) {
   if (Object.prototype.toString.call(nums) !== '[object Array]' || nums.length <= 0) return nums
 
   const swap = function(nums, i, j) {
@@ -27,17 +27,18 @@ const moveZeroes = function(nums) {
  * 解法二：nums[pos++] = nums[i]
  */
 const moveZeroes = function(nums) {
-  if (Object.prototype.toString.call(nums) !== '[object Array]' || nums.length < 1) {
-    return
-  }
-  
-  let pos = 0
-  for(let i = 0; i < nums.length; ++i) {
+  if (!Array.isArray(nums) || nums.length < 1) return
+  let insertPos = 0
+  for (let i = 0; i < nums.length; ++i) {
     if (nums[i] !== 0) {
-      nums[pos++] = nums[i]
+      nums[insertPos++] = nums[i]
     }
   }
-  while(pos < nums.length) {
-    nums[pos++] = 0
+  while (insertPos < nums.length) {
+    nums[insertPos++] = 0
   }
 }
+// ---- test case ----
+var nums = [0,1,0,3,12]
+moveZeroes(nums)
+console.log(nums)
