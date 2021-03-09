@@ -30,7 +30,7 @@ console.log(maxArea1([4,3,2,1,4]))
 console.log(maxArea1([1,2,1]))
 
 // 解法二： O(n) 核心：移动短板，area可能会变大；移动长板，area只会不变或变小。因此，双指针，每次移动短板即可。
-const maxArea = function(a) {
+const maxArea = function(A) {
   if (!Array.isArray(A) || A.length < 2) return 0
   let max = 0, l = 0, r = A.length - 1
   while (l < r) {
