@@ -29,12 +29,12 @@ console.log(maxArea1([1,1]))
 console.log(maxArea1([4,3,2,1,4]))
 console.log(maxArea1([1,2,1]))
 
-// 解法二： O(n)
-const maxArea = function(a) {
-  if (Object.prototype.toString.call(a) !== '[object Array]' || a.length < 2) return 0
-  let max = 0, l = 0, r = a.length - 1
-  while(l < r) {
-    const minHeight = a[l] < a[r] ? a[l++] : a[r--]
+// 解法二： O(n) 核心：移动短板，area可能会变大；移动长板，area只会不变或变小。因此，双指针，每次移动短板即可。
+const maxArea = function(A) {
+  if (!Array.isArray(A) || A.length < 2) return 0
+  let max = 0, l = 0, r = A.length - 1
+  while (l < r) {
+    const minHeight = A[l] < A[r] ? A[l++] : A[r--]
     const area = minHeight * (r - l + 1)
     max = Math.max(max, area)
   }
