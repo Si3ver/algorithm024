@@ -21,9 +21,9 @@ const preorder1 = function(root) {
 const preorder = function(root) {
   if (root == null) return []
   const res = [], stack = [root]
-  while (stack.length) {
+  while (stack.length > 0) {
     const p = stack.pop()
-    if (p.children) 
+    if (p.children.length > 0) 
       for(let i = p.children.length - 1; i >= 0; --i) 
         stack.push(p.children[i])
     res.push(p.val)
