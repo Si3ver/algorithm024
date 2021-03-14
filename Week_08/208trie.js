@@ -18,21 +18,22 @@ class Trie {
     node.isWord = true
   }
 
-  search (word) {
+  _traverse (word) {
     let node = this.root
     for (const ch of word) {
       node = node[ch]
-      if (node == null) return false
+      if (node == null) return null
     }
-    return node.isWord != void(0)
+    return node
+  }
+
+  search (word) {
+    const node = this._traverse(word)
+    return node != null && node.isWord === true
   }
 
   startsWith (prefix) {
-    let node = this.root
-    for (const ch of prefix) {
-      node = node[ch]
-      if (node == null) return false
-    }
+    const node = this._traverse(prefix)
     return !!node
   }
 }
