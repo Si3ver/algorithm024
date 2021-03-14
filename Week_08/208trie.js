@@ -4,44 +4,46 @@
  * 
  */
 
-/**
- * Initialize your data structure here.
- */
-var Trie = function() {
+class Trie {
+  constructor() {
+    this.root = {}
+  }
 
-};
+  insert(word) {
+    let node = this.root
+    for (const ch of word) {
+      if (node[ch] == null) node[ch] = {}
+      node = node[ch]
+    }
+    node.isWord = true
+  }
 
-/**
- * Inserts a word into the trie. 
- * @param {string} word
- * @return {void}
- */
-Trie.prototype.insert = function(word) {
+  search (word) {
+    let node = this.root
+    for (const ch of word) {
+      node = node[ch]
+      if (node == null) return false
+    }
+    return node.isWord != void(0)
+  }
 
-};
+  startsWith (prefix) {
+    let node = this.root
+    for (const ch of prefix) {
+      node = node[ch]
+      if (node == null) return false
+    }
+    return !!node
+  }
+}
 
-/**
- * Returns if the word is in the trie. 
- * @param {string} word
- * @return {boolean}
- */
-Trie.prototype.search = function(word) {
-
-};
-
-/**
- * Returns if there is any word in the trie that starts with the given prefix. 
- * @param {string} prefix
- * @return {boolean}
- */
-Trie.prototype.startsWith = function(prefix) {
-
-};
-
-/**
- * Your Trie object will be instantiated and called as such:
- * var obj = new Trie()
- * obj.insert(word)
- * var param_2 = obj.search(word)
- * var param_3 = obj.startsWith(prefix)
- */
+// ---- test case ----
+var trie = new Trie()
+trie.insert("apple")
+console.log(trie.search("bbb"))
+console.log(trie.search("apple"))   // 返回 true
+console.log(trie.search("app"))     // 返回 false
+console.log(trie.startsWith("app")) // 返回 true
+console.log(trie.startsWith("apbbb")) // 返回 false
+trie.insert("app")
+console.log(trie.search("app"))     // 返回 true
