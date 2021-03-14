@@ -8,6 +8,7 @@
  */
 
 // dp 空间可以压缩到单个变量
+// O(n) O(1)
 const maxSubArray = function(A) {
   if (!Array.isArray(A) || A.length < 1) return
   let max = dp = A[0]

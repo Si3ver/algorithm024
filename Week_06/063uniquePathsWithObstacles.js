@@ -6,29 +6,25 @@
  * 
  */
 
-// 障碍物处 dp[x] = 0
-const uniquePathsWithObstacles = function(obstacleGrid) {
-  if (!Array.isArray(obstacleGrid) || 
-      obstacleGrid.length < 1 ||
-      !Array.isArray(obstacleGrid[0]) ||
-      obstacleGrid[0].length < 1) return 0
+// 障碍物处 dp[j] = 0
+const uniquePathsWithObstacles = function(A) {
+  if (!Array.isArray(A) || A.length < 1 ||
+      !Array.isArray(A[0]) || A[0].length < 1) return 0
 
-  const m = obstacleGrid.length,
-        n = obstacleGrid[0].length,
-        dp = new Array(n).fill(-1)
-  
-  for(let i = m - 1; i >= 0; --i) {
+  const m = A.length
+  const n = A[0].length
+  const lastObsIdx = A[m - 1].lastIndexOf(1)
+  const dp = Array(lastObsIdx + 1).fill(0)
+     .concat(Array(n - lastObsIdx - 1).fill(1))  // 初始化最下行（最后一个障碍物前全是零，后面是1）
+
+  for (let i = m - 2; i >= 0; --i) {
     for (let j = n - 1; j >= 0; --j) {
-      if (obstacleGrid[i][j] === 1) {
+      if (A[i][j] === 1) {  // 障碍物
         dp[j] = 0
-      } else if (i === m - 1 || j === n - 1) {
-        if (dp[j] === 0 || (j + 1 < n && dp[j + 1] === 0)) {  // 障碍节点
-          dp[j] = 0
-        } else {
-          dp[j] = 1
-        }
+      } else if (j === n - 1) { // 最右列（如果该列下面有障碍物，则为零）
+        dp[j] = dp[j] === 0 ? 0 : 1
       } else {
-        dp[j] = dp[j] + dp[j + 1]
+        dp[j] += dp[j + 1]
       }
     }
   }

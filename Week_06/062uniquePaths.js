@@ -31,6 +31,18 @@ const uniquePaths2 = function(m, n) {
   return dp[0]
 }
 
+// 变成正向计算
+// O(mn) O(n)
+const uniquePaths = function(m, n) {
+  const dp = Array(n).fill(1)
+  for (let i = 1; i < m; ++i) {
+    for (let j = 1; j < n; ++j) {
+      dp[j] += dp[j - 1]
+    }
+  }
+  return dp[n - 1]
+}
+
 // ---- test case ----
 console.time('uniquePaths')
 console.log(uniquePaths(3,7))

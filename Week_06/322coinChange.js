@@ -13,18 +13,17 @@
 const coinChange = function(coins, amount) {
   if (!Array.isArray(coins) || coins.length < 1 || amount < 0) return -1
   if (amount === 0) return 0
-  const dp = new Array(amount + 1).fill(Infinity)
+  const UPBOUND = amount + 1
+  const dp = Array(amount + 1).fill(UPBOUND)
   dp[0] = 0
-  
   for (let i = 1; i <= amount; ++i) {
     for (const coin of coins) {
-      if (i - coin >= 0 && dp[i - coin] !== Infinity) {
+      if (i - coin >= 0) {
         dp[i] = Math.min(dp[i], dp[i - coin] + 1)
       }
     }
   }
-  // console.log(dp)
-  return dp[amount] === Infinity ? -1 : dp[amount]
+  return dp[amount] === UPBOUND ? -1 : dp[amount]
 }
 
 // ---- test case ----
