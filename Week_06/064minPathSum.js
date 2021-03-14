@@ -1,7 +1,8 @@
 /**
- * @param {number[][]} grid
- * @return {number}
- * F(i, j) = A(i, j) + min(F(i-1, j) + F(i, j-1))
+ * https://leetcode-cn.com/problems/minimum-path-sum/
+ * 64. 最小路径和 | medium
+ * 
+ * f(i, j) = A[i][j] + min(f(i-1, j) + f(i, j-1))
  */
 
 // O(mn) O(n)
