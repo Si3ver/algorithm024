@@ -28,11 +28,13 @@
 ## 三、启发式搜索
 ### 1091. 二进制矩阵中的最短路径
 
-解法一：DP
-解法二：BFS
-解法三：A*
++ 解法一：DP
++ 解法二：BFS
++ 解法三：A*
++ [代码](./1091shortestPathBinaryMatrix.js)
 
-[代码](./1091shortestPathBinaryMatrix.js)
+### TODO 773. 滑动谜题
 
-### 773. 滑动谜题
-
++ 解法一：BFS
++ 解法二：A*
++ [代码](./773slidingPuzzle.js)
