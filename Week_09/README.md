@@ -2,6 +2,24 @@
 
 ## 第 17 课 | 布隆过滤器 & LRU 缓存
 
+### Bloom Filter
+
+案例
+
+1. 比特币网络
+2. 分布式系统（Map-Reduce）—— Hadoop，search engine
+3. Redis缓存
+4. 垃圾邮件、评论等的过滤
+
+> https://www.cnblogs.com/cpselvis/p/6265825.html
+> https://blog.csdn.net/tianyaleixiaowu/article/details/74721877
+
+### LRU cache
+
++ Least recently used
++ 实现：HashMap + 双向链表
++ O(1) 查询
++ O(1) 修改、更新
 
 ## 第 18 课 | 排序算法
 
