@@ -5,6 +5,7 @@
 
 // 解法一：BFS + 回溯 + 剪枝
 const ladderLength1 = function(beginWord, endWord, wordList) {
+  if (wordList.indexOf(endWord) === -1) return 0
   const wordSet = new Set(wordList)
   const queue = [[beginWord, 1]]
   const alphas = [...'abcdefghijklmnopqrstuvwxyz']
@@ -27,7 +28,40 @@ const ladderLength1 = function(beginWord, endWord, wordList) {
 
 // 解法二：双向BFS
 const ladderLength = function(beginWord, endWord, wordList) {
-  // TODO 
+  if (wordList.indexOf(endWord) === -1) return 0
+  const alphas = [...'abcdefghijklmnopqrstuvwxyz']
+  const n = beginWord.length
+  const wordSet = new Set(wordList)
+  let frontSet = new Set([beginWord])
+  let endSet = new Set([endWord])
+  let level = 1
+  while (frontSet.size > 0) {
+    ++level
+    const nextFrontSet = new Set()
+    for (curWord of frontSet) {
+      for (let i = 0; i < n; ++i) {
+        for (const ch of alphas) {
+          if (ch !== curWord[i]) {
+            nextWord = curWord.slice(0, i) + ch + curWord.slice(i + 1)
+            if (endSet.has(nextWord)) {
+              return level
+            }
+            if (wordSet.has(nextWord)) {
+              nextFrontSet.add(nextWord)
+              wordSet.delete(nextWord)
+            }
+          }
+        }
+      }
+    }
+    frontSet = nextFrontSet
+    if (frontSet.size > endSet.size) {  // swap
+      const tmp = frontSet
+      frontSet = endSet
+      endSet = tmp
+    }
+  }
+  return 0
 }
 
 // ---- test case ----

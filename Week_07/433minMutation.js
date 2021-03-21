@@ -27,8 +27,41 @@ const minMutation1 = function(start, end, bank) {
 }
 
 // 解法二：双向BFS
-const minMutation = function(start, end, bank) {
-  // TODO 
+const minMutation = function(beginWord, endWord, wordList) {
+  if (wordList.indexOf(endWord) === -1) return -1
+  const alphas = [...'ACGT']
+  const n = beginWord.length
+  const wordSet = new Set(wordList)
+  let frontSet = new Set([beginWord])
+  let endSet = new Set([endWord])
+  let level = 0
+  while (frontSet.size > 0) {
+    ++level
+    const nextFrontSet = new Set()
+    for (curWord of frontSet) {
+      for (let i = 0; i < n; ++i) {
+        for (const ch of alphas) {
+          if (ch !== curWord[i]) {
+            nextWord = curWord.slice(0, i) + ch + curWord.slice(i + 1)
+            if (endSet.has(nextWord)) {
+              return level
+            }
+            if (wordSet.has(nextWord)) {
+              nextFrontSet.add(nextWord)
+              wordSet.delete(nextWord)
+            }
+          }
+        }
+      }
+    }
+    frontSet = nextFrontSet
+    if (frontSet.size > endSet.size) {  // swap
+      const tmp = frontSet
+      frontSet = endSet
+      endSet = tmp
+    }
+  }
+  return -1
 }
 
 // ---- test case ----

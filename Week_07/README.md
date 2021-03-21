@@ -39,7 +39,11 @@ const dfs = (root) => {
 
 ### 剪枝
 
+尽早删除无效分支，加速搜索
+
 ### 双向BFS
+
++ two ended search
 
 ### 启发式搜索 A*
 
