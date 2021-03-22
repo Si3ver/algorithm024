@@ -1,8 +1,9 @@
 /**
  * https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
+ * https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/
  * 3. 无重复字符的最长子串 | medium
  * 
- * hashmap
+ * hashmap + 双指针
  */
 
 const lengthOfLongestSubstring = function(s) {

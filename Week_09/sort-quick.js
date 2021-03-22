@@ -19,6 +19,39 @@ function partition(arr, left, right) {
 }
 
 // ---- test case ----
-const arr = [3, 2, 32, 45, 767, 234, 66, 32]
-quickSort(arr)
-console.log(arr)
+const arr1 = [5,2,3,1]
+quickSort(arr1)
+console.log(arr1)
+
+// const arr2 = [5,1,1,2,0,0]
+// quickSort(arr2)
+// console.log(arr2)
+
+
+
+// var quickSort = function(nums) {
+//   function quickSortHelper(nums, start, end) {
+//       if (start >= end) return nums
+  
+//       var pivotValue = nums[start]
+//       var smaller = start
+//       for (var i = start + 1; i <= end; i++) {
+//           var bigger = i
+//           if (nums[bigger] < pivotValue) {
+//               smaller++
+//               var smallerValue = nums[bigger]
+//               nums[bigger] = nums[smaller]
+//               nums[smaller] = smallerValue
+//           }
+//       }
+//       var smallerCache = nums[smaller]
+//       nums[smaller] = nums[start]
+//       nums[start] = smallerCache
+      
+//       quickSortHelper(nums, start, smaller - 1)
+//       quickSortHelper(nums, smaller + 1, end)
+//       return nums
+//   }
+  
+//   return quickSortHelper(nums, 0, nums.length - 1)
+// };

@@ -44,23 +44,23 @@ console.log('solution 1: ', threeSum2([-1, 0, 1, 2, -1, -4]))
  */
 
 const threeSum = function(nums) {
-  if (Object.prototype.toString.call(nums) !== '[object Array]' || nums.length < 3) return []
-  nums.sort((x, y) => x - y)  // O(nlogn)
+  if (!Array.isArray(nums) || nums.length < 3) return []
+  nums.sort((x, y) => x - y)
   const res = []
-  for(let k = 0; k < nums.length - 2; ++k) {
-    if (nums[k] > 0) break  // prun
-    if (k > 0 && nums[k] === nums[k-1]) continue  // unique
+  for (let k = 0; k < nums.length - 2; ++k) {
+    if (nums[k] > 0) break
+    if (k > 0 && nums[k] === nums[k - 1]) continue
     let l = k + 1, r = nums.length - 1
-    while(l < r) {
+    while (l < r) {
       const sum = nums[k] + nums[l] + nums[r]
       if (sum < 0) {
-        while(l < r && nums[l] === nums[++l]) {}  // unique
+        while (l < r && nums[l] === nums[++l]) {}
       } else if (sum > 0) {
-        while(l < r && nums[r] === nums[--r]) {}  // unique
+        while (l < r && nums[r] === nums[--r]) {}
       } else {
         res.push([nums[k], nums[l], nums[r]])
-        while(l < r && nums[l] === nums[++l]) {}  // unique
-        while(l < r && nums[r] === nums[--r]) {}  // unique
+        while (l < r && nums[l] === nums[++l]) {}
+        while (l < r && nums[r] === nums[--r]) {}
       }
     }
   }
