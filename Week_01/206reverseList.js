@@ -1,5 +1,6 @@
 /**
  * https://leetcode-cn.com/problems/reverse-linked-list/
+ * https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/submissions/
  * 思路：维护好 prev，cur
  * 
  * @param {ListNode} head
