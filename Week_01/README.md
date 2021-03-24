@@ -5,6 +5,10 @@
 > [Java.util.ArrayList](http://developer.classpath.org/doc/java/util/ArrayList-source.html)
 > [Java.util.LinkedList](http://developer.classpath.org/doc/java/util/LinkedList-source.html)
 
+**手撕代码**
+
++ [JavaScript版实现单向链表](../linkedlist/LinkedList.js)
+
 **时间复杂度**
 
 备注：skiplist 是有序的，实现简单，维护成本较高，空间复杂度O(n)。
