@@ -7,9 +7,10 @@ class ListNode {
 }
 
 class LinkedList {
-  constructor () {
-    this.dummyHead = new ListNode('head')
+  constructor (head = null) {
+    this.dummyHead = new ListNode('head', head)
   }
+  // 末尾追加节点
   append (val) {
     let node = this.dummyHead
     while (node && node.next) {
@@ -18,6 +19,7 @@ class LinkedList {
     node.next = new ListNode(val)
     return this
   }
+  // 删除第一个值为 val 的节点
   delete (val) {
     let prev = this.dummyHead
     while (prev && prev.next && prev.next.val != val) {
@@ -26,6 +28,7 @@ class LinkedList {
     prev.next = prev.next.next
     return this
   }
+  // 反转链表
   reverse () {
     let prev = null
     let node = this.dummyHead.next
@@ -38,6 +41,7 @@ class LinkedList {
     this.dummyHead.next = prev
     return this
   }
+  // 获取链表长度
   get size() {
     let cnt = 0
     let node = this.dummyHead.next
@@ -47,6 +51,15 @@ class LinkedList {
     }
     return cnt
   }
+  // 获取链表头节点
+  get head() {
+    return this.dummyHead.next
+  }
+  // 设置新的头节点
+  set head(newHead) {
+    this.dummyHead.next = newHead
+  }
+  // 显示链表
   display() {
     let node = this.dummyHead.next
     const res = []
@@ -59,21 +72,24 @@ class LinkedList {
   }
 }
 
-// ---- test case ----
-let link = new LinkedList()
-link.display()  // ''
-    .append(1)
-    .display()  // 1
-    .append(2)
-    .append(3)
-    .append(4)
-    .append(5)
-    .delete(5)
-    .delete(2)
-    .display()  // 1 -> 3 -> 4
-    .reverse()
-    .display()  // 4 -> 3 -> 1
-    .reverse()
-    .display()  // 1 -> 3 -> 4
+// // ---- test case ----
+// let link = new LinkedList()
+// link.display()  // ''
+//     .append(1)
+//     .display()  // 1
+//     .append(2)
+//     .append(3)
+//     .append(4)
+//     .append(5)
+//     .delete(5)
+//     .delete(2)
+//     .display()  // 1 -> 3 -> 4
+//     .reverse()
+//     .display()  // 4 -> 3 -> 1
+//     .reverse()
+//     .display()  // 1 -> 3 -> 4
 
-console.log(link.size)
+// console.log(link.size)
+
+// ---- export ----
+module.exports = { ListNode, LinkedList }
