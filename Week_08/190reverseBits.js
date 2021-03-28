@@ -2,6 +2,8 @@
  * https://leetcode-cn.com/problems/reverse-bits/
  * 190. 颠倒二进制位
  */
+
+// O(logn), 每次把最低位挪给 res
 function reverseBits(n) {
   let res = 0, loops = 32
   while (--loops >= 0) {

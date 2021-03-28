@@ -9,8 +9,4 @@ function solveNQueens(n) {
 }
 
 // ---- test case ----
-// console.log(buildResultsBoard([
-//   [1, 3, 0, 2],
-//   [2, 0, 3, 1],
-// ], 4))
 console.log(solveNQueens(4))
