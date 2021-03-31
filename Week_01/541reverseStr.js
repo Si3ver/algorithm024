@@ -2,17 +2,20 @@
  * https://leetcode-cn.com/problems/reverse-string-ii/
  */
 
-const reverseStr = function(s, k) {
-  const swap = function (arr, i, j) {
+function swap(arr, i, j) {
+  if (i !== j) {
     const tmp = arr[i]
     arr[i] = arr[j]
     arr[j] = tmp
   }
+}
+
+function reverseStr(s, k) {
   const arr = s.split('')
-  for(let i = 0; i < arr.length; i += 2 * k) {
-    let start = i, end = Math.min(i + k - 1, arr.length - 1)
-    // console.log("🚀", start, end)
-    while(start < end) {
+  for (let i = 0; i < s.length; i += 2 * k) {
+    let start = i
+    let end = Math.min(i + k - 1, arr.length - 1)
+    while (start < end) {
       swap(arr, start++, end--)
     }
   }
