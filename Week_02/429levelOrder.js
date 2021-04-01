@@ -1,9 +1,10 @@
 /**
  * https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/
- * 【BFS】
+ * 429. N 叉树的层序遍历
+ * BFS
  */
 
-const levelOrder = function(root) {
+function levelOrder(root) {
   if (root == null) return []
   const res = [], queue = [root]
   while(queue.length) {

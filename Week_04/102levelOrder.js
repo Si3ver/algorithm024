@@ -1,21 +1,22 @@
 /**
  * https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+ * 102. 二叉树的层序遍历
  * 
  * 思路：【BFS】
  * 手动维护queue （push + unshift）
  * 内层维护一个循环，循环当前queue的size，为一层（null不要加入queue）
  */
 
-const levelOrder = function(root) {
+function levelOrder(root) {
   if (root == null) return []
   const res = [], queue = [root]
-  while(queue.length) {
-    const n = queue.length, line = []
-    for(let i = 0; i < n; ++i) {  // 循环n次为一层结果
-      const p = queue.pop()
-      if (p.left != null) queue.unshift(p.left)
-      if (p.right != null) queue.unshift(p.right)
-      line.push(p.val)
+  while (queue.length > 0) {
+    const size = queue.length, line = []
+    for (let i = 0; i < size; ++i) {
+      const node = queue.pop()
+      if (node.left)  queue.unshift(node.left)
+      if (node.right) queue.unshift(node.right)
+      line.push(node.val)
     }
     res.push(line)
   }
