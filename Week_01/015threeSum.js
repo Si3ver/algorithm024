@@ -43,7 +43,7 @@ console.log('solution 1: ', threeSum2([-1, 0, 1, 2, -1, -4]))
  * 2. 外层循环k，左右双指针夹逼。挪动去重
  */
 
-const threeSum = function(nums) {
+function threeSum(nums) {
   if (!Array.isArray(nums) || nums.length < 3) return []
   nums.sort((x, y) => x - y)
   const res = []
