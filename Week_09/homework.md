@@ -39,9 +39,20 @@
 
 ## 三、高级动态规划
 
-TODO ### 不同路径 2 这道题目的状态转移方程
+### 不同路径 2 道题目的状态转移方程
 
-+ [代码](./063uniquePathsWithObstacles.js)
+```js
+// 不同路径 I
+f(i, j) = f(i-1, j) + f(i, j-1)
+// 不同路径 II
+if 障碍物处:
+  f(i, j) = 0
+else
+  f(i, j) = f(i+1, j) + f(i, j+1)
+```
+
++ [不同路径 I](./062uniquePaths.js)
++ [不同路径 II](./063uniquePathsWithObstacles.js)
 
 TODO ### 最长上升子序列（字节跳动、亚马逊、微软在半年内面试中考过）
 
