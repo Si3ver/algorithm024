@@ -8,3 +8,5 @@ function racecar (target) {
 }
 
 // ---- test case ----
+console.log(racecar(3)) // 2 AA
+console.log(racecar(6)) // 5 AAARA

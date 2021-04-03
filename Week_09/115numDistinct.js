@@ -8,3 +8,5 @@ function numDistinct (s, t) {
 }
 
 // ---- test case ----
+console.log(numDistinct('rabbbit', 'rabbit')) // 3
+console.log(numDistinct('babgbag', 'bag'))    // 5

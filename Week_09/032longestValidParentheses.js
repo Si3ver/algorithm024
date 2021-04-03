@@ -7,3 +7,7 @@ function longestValidParentheses(s) {
 
 }
 
+// ---- test case ----
+console.log(longestValidParentheses('(()'))     // 2
+console.log(longestValidParentheses(')()())'))  // 4
+console.log(longestValidParentheses(''))        // 0
