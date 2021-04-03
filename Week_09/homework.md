@@ -54,7 +54,7 @@ else
 + [不同路径 I](./062uniquePaths.js)
 + [不同路径 II](./063uniquePathsWithObstacles.js)
 
-TODO ### 最长上升子序列（字节跳动、亚马逊、微软在半年内面试中考过）
+### 最长上升子序列（字节跳动、亚马逊、微软在半年内面试中考过）
 
 + [代码](./300lengthOfLIS.js)
 
