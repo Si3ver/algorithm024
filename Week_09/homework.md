@@ -58,7 +58,7 @@ else
 
 + [代码](./300lengthOfLIS.js)
 
-TODO ### 解码方法（字节跳动、亚马逊、Facebook 在半年内面试中考过）
+### 解码方法（字节跳动、亚马逊、Facebook 在半年内面试中考过）
 
 + [代码](./091numDecodings.js)
 
