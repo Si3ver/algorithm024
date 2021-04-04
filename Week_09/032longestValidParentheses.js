@@ -43,10 +43,11 @@ function longestValidParentheses(s) {
     } else if (leftCnt > 0) {
       --leftCnt
       dp[i]  = dp[i - 1] + 2
-      if (i - dp[i] >= 0) {
-        const prev = dp[i - dp[i]] // 之前有效的部分
-        dp[i] += prev
-      }
+      // if (i - dp[i] >= 0) {
+      //   const prev = dp[i - dp[i]] // 之前有效的部分
+      //   dp[i] += prev
+      // }
+      dp[i] += i - dp[i] >= 0 ? dp[i - dp[i]] : 0
     }
   }
   // console.log(dp)

@@ -70,10 +70,10 @@ TODO ### 最大矩形（谷歌、微软、字节跳动在半年内面试中考�
 
 + [代码](./085maximalRectangle.js)
 
-TODO ### 不同的子序列（MathWorks 在半年内面试中考过）
+### 不同的子序列（MathWorks 在半年内面试中考过）
 
++ TODO 比较难理解，还需要过遍数
 + [代码](./115numDistinct.js)
-
 
 TODO ### 赛车（谷歌在半年内面试中考过）
 
