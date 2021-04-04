@@ -62,7 +62,7 @@ else
 
 + [代码](./091numDecodings.js)
 
-TODO ### 最长有效括号（亚马逊、字节跳动、华为在半年内面试中考过）
+### 最长有效括号（亚马逊、字节跳动、华为在半年内面试中考过）
 
 + [代码](./032longestValidParentheses.js)
 
