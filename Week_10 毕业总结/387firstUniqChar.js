@@ -13,28 +13,23 @@ function firstUniqChar1(s) {
   return -1
 }
 
-// array存字母位置
-// O(n) O(26)
 function firstUniqChar(s) {
-  const positions = Array(26) // 默认为 empty
+  const UPPER = s.length
+  const positions = Array(26).fill(UPPER) // 默认为 empty
   const pos0 = 'a'.codePointAt(0)
   for (let i = 0; i < s.length; ++i) {
     const chIdx = s.codePointAt(i) - pos0
-    if (positions[chIdx] >= 0) {  // 该字符出现过
-      positions[chIdx] = -1       // 标记为-1
-    } else if (positions[chIdx] !== -1) { // 字符没出现过
+    if (positions[chIdx] < UPPER) { // 已经出现过 & 未标记过
+      positions[chIdx] = UPPER + 1
+    } else if (positions[chIdx] === UPPER) { // 第一次出现
       positions[chIdx] = i
+    } else {  // 已经出现过 & 已标记过
+      continue
     }
   }
-  let minPos = s.length
-  for (let i = 0; i < positions.length; ++i) {
-    if (positions[i] >= 0 && minPos > positions[i]) {
-      minPos = positions[i]
-    }
-  }
-  return minPos === s.length ? -1 : minPos
+  const minPos = Math.min(...positions)
+  return minPos >= UPPER ? -1 : minPos
 }
-
 
 
 // ---- test case ----
