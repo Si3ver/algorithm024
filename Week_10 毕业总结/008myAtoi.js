@@ -15,7 +15,7 @@ function myAtoi(str) {
   
   let idx = 0, sign = 1, total = 0
 
-  // 去除左边空格
+  // 去左空格
   while (str.charAt(idx) === ' ' && idx < n) ++idx 
 
   // 处理正负号
@@ -25,6 +25,7 @@ function myAtoi(str) {
     ++idx
   }
 
+  // 检索数字，计算total
   const startIdx = '0'.codePointAt(0)
   for (; idx < n; ++idx) {
     const digit = str.codePointAt(idx) - startIdx
@@ -34,7 +35,8 @@ function myAtoi(str) {
     total = 10 * total + digit
   }
 
-  const MAX = 2147483647, MIN = -2147483648
+  // 处理 int(32bit) 边界
+  const MIN = 1 << 31, MAX = -1 * (MIN + 1)
   let ret = total * sign
   ret = ret > MAX ? MAX : ret
   ret = ret < MIN ? MIN : ret
