@@ -4,7 +4,7 @@
  */
 
 // 解法一：利用 Map 本身是 orderedDict 的特性
-class LRUCache1 {
+class LRUCache {
   constructor(capacity) {
     this.cache = new Map()
     this.capacity = capacity
@@ -22,7 +22,9 @@ class LRUCache1 {
     }
     this.cache.set(key, value)
     if (this.cache.size > this.capacity) {
-      this.cache.delete(this.cache.keys().next().value)
+      const iter = this.cache.keys()
+      // console.log("🚀", iter)
+      this.cache.delete(iter.next().value)
     }
   }
 }
@@ -36,7 +38,7 @@ class ListNode {
     this.next = null;
   }
 }
-class LRUCache {
+class LRUCache1 {
   constructor(capacity) {
     this.capacity = capacity;
     this.cache = new Map();

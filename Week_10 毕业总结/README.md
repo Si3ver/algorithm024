@@ -15,3 +15,8 @@ string immutable
 2. [String.prototype.substr()]
 3. [String.prototype.substring()]
 
+**字符串DP**
+1. 最长回文串
+  1. 暴力 O(n^3)
+  2. 中间向两边扩张 O(n^2)
+  3. 动态规划 O(n^2)

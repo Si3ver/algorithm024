@@ -16,7 +16,7 @@
 
 ### LRU cache
 
-+ Least recently used
++ Least recently used -> 最近最少使用
 + 实现：HashMap + 双向链表
 + O(1) 查询
 + O(1) 修改、更新
