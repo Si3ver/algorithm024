@@ -3,6 +3,7 @@
  * 438. 找到字符串中所有字母异位词 ｜ medium
  */
 
+// 滑动窗口 + 数组统计 O(n)
 function findAnagrams (s, p) {
   const m = s.length, n = p.length
   if (m < n || n < 1) return []
