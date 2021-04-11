@@ -1,9 +1,3 @@
 # 算法训练
 
-## 链表系列
-
-+ [单向链表实现](./linkedlist/LinkedList.js)
-+ [反转链表](./linkedlist/206reverseList.js)
-+ [合并两个有序链表](./linkedlist/021mergeTwoLists.js)
-+ [环形链表](./linkedlist/141hasCycle.js)
-+ [相交链表](./linkedlist/160getIntersectionNode.js)
+[毕业刷题路线](./Week_10%20%E6%AF%95%E4%B8%9A%E6%80%BB%E7%BB%93/road.md)
