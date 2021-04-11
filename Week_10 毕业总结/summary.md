@@ -1,8 +1,20 @@
 # 毕业总结
 
 > [毕业刷题路线](./road.md)
+
 > [visualgo](visualgo.net)
+
 > [常见的复杂度](https://www.bigocheatsheet.com/)
+
+**一些JS的算法资料**
+
+> [awesome-coding-js](http://www.conardli.top/docs/)
+
+> [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)
+
+**感言**
+
+算法这东西，其实没啥感悟好写的，算法无非是熟练、熟练、再熟练。总结，多过遍数。工作、生活场景中，多想想算法的运用场景。立个flag，工作期间也要每天刷一题leetcode，早日刷穿题库。
 
 ## 知识点
 
