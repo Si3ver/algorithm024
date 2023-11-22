@@ -6,13 +6,13 @@
 
 const twoSum = function(nums, target) {
   if (Object.prototype.toString.call(nums) !== '[object Array]' || nums.length < 2) return []
-  const m = new Map()
+  const map = new Map()
   for(let i = 0; i < nums.length; ++i) {
-    if (m.has(nums[i])) {
-      return [m.get(nums[i]), i]
-    } else {
-      m.set(target - nums[i], i)
-    }
+      if (!map.has(nums[i])) {
+          map.set(target - nums[i], i)
+      } else {
+          return [map.get(nums[i]), i]
+      }
   }
   return []
 }

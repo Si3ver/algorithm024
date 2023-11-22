@@ -1,5 +1,5 @@
 /**
- * https://leetcode.com/problems/3sum/
+ * https://leetcode-cn.com/problems/3sum/
  * 015 三数之和 medium
  * 
  * 思路：
@@ -10,26 +10,24 @@
 
 // 解法2 O(n^2)
 // trick: 用set 和 JSON.stringify 去重
-let threeSum2 = function (nums) {
-  if (Object.prototype.toString.apply(nums) !== '[object Array]' || nums.length < 3) return []
-  nums.sort((a, b) => a - b)
-  let resSet = new Set(),
-    res = []
-  for (let i = 0; i < nums.length - 2; ++i) {
-    let target = -nums[i],
-      hashmap = {}
-    for (let j = i + 1; j < nums.length; ++j) {
-      if (hashmap[nums[j]] === void(0)) {
-        hashmap[target - nums[j]] = j
-      } else {
-        let curItem = [-target, nums[hashmap[nums[j]]], nums[j]]
-        let sCurItem = JSON.stringify(curItem)
-        if (!resSet.has(sCurItem)) {
-          resSet.add(sCurItem)
-          res.push(curItem)
-        }
+var threeSum2 = function(nums) {
+  if (!Array.isArray(nums) || nums.length < 3) return []
+  nums.sort((x, y) => x - y)
+  const resSet = new Set(), res = []
+  for (let k = 0; k < nums.length - 2 && nums[k] <= 0; ++k) {
+      const target = -nums[k], map = new Map()
+      for (let i = k + 1; i < nums.length; ++i) {
+          if (!map.has(nums[i])) {
+              map.set(target - nums[i], i)
+          } else {
+              const resItem = [k, map.get(nums[i]), i].map(x => nums[x])
+              const strItem = resItem.join(',')
+              if (!resSet.has(strItem)) {
+                  resSet.add(strItem)
+                  res.push(resItem)
+              }
+          }
       }
-    }
   }
   return res
 };
@@ -47,25 +45,24 @@ function threeSum(nums) {
   if (!Array.isArray(nums) || nums.length < 3) return []
   nums.sort((x, y) => x - y)
   const res = []
-  for (let k = 0; k < nums.length - 2; ++k) {
-    if (nums[k] > 0) break
-    if (k > 0 && nums[k] === nums[k - 1]) continue
-    let l = k + 1, r = nums.length - 1
-    while (l < r) {
-      const sum = nums[k] + nums[l] + nums[r]
-      if (sum < 0) {
-        while (l < r && nums[l] === nums[++l]) {}
-      } else if (sum > 0) {
-        while (l < r && nums[r] === nums[--r]) {}
-      } else {
-        res.push([nums[k], nums[l], nums[r]])
-        while (l < r && nums[l] === nums[++l]) {}
-        while (l < r && nums[r] === nums[--r]) {}
+  for (let k = 0; k < nums.length - 2 && nums[k] <= 0; ++k) {
+      if (k > 0 && nums[k] === nums[k - 1]) continue
+      for (let l = k + 1, r = nums.length - 1; l < r; ) {
+          const sum = nums[k] + nums[l] + nums[r]
+          if (sum === 0) {
+              res.push([k, l, r].map(x => nums[x]))
+              while(l < r && nums[l] === nums[++l]) {}
+              while(l < r && nums[r] === nums[--r]) {}
+          } else if (sum < 0) {
+              while(l < r && nums[l] === nums[++l]) {}
+          } else {
+              while(l < r && nums[r] === nums[--r]) {}
+          }
       }
-    }
+
   }
   return res
 }
 
-console.log('solution 2: ', threeSum([-1, 0, 1, 2, -1, -4]))
+console.log('solution 2: ', threeSum([-1, 0, 1, 2, -1]))
 console.log('solution 2: ', threeSum([-2, 0, 0, 2, 2]))
