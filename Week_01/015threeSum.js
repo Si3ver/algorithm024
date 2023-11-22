@@ -42,26 +42,27 @@ console.log('solution 1: ', threeSum2([-1, 0, 1, 2, -1, -4]))
  */
 
 function threeSum(nums) {
-  if (!Array.isArray(nums) || nums.length < 3) return []
-  nums.sort((x, y) => x - y)
-  const res = []
-  for (let k = 0; k < nums.length - 2 && nums[k] <= 0; ++k) {
-      if (k > 0 && nums[k] === nums[k - 1]) continue
-      for (let l = k + 1, r = nums.length - 1; l < r; ) {
-          const sum = nums[k] + nums[l] + nums[r]
-          if (sum === 0) {
-              res.push([k, l, r].map(x => nums[x]))
-              while(l < r && nums[l] === nums[++l]) {}
-              while(l < r && nums[r] === nums[--r]) {}
-          } else if (sum < 0) {
-              while(l < r && nums[l] === nums[++l]) {}
-          } else {
-              while(l < r && nums[r] === nums[--r]) {}
-          }
-      }
+    if (!Array.isArray(nums) || nums.length < 3) return []
 
-  }
-  return res
+    nums.sort((x, y) => x - y)
+    const res = []
+    for (let k = 0; k < nums.length - 2 && nums[k] <= 0; ++k) {
+        if (k > 0 && nums[k] === nums[k - 1]) continue // 与上一轮 k 相同，不用在试
+        for (let l = k + 1, r = nums.length - 1; l < r; ) {
+            const sum = nums[k] + nums[l] + nums[r]
+            if (sum === 0) {
+                // console.log(k, l, r)
+                res.push([k, l, r].map(x => nums[x]))
+                while(l < r && nums[l] === nums[++l]) {}
+                while(l < r && nums[r] === nums[--r]) {}
+            } else if (sum < 0) {
+                while(l < r && nums[l] === nums[++l]) {}
+            } else {
+                while(l < r && nums[r] === nums[--r]) {}
+            }
+        }
+    }
+    return res
 }
 
 console.log('solution 2: ', threeSum([-1, 0, 1, 2, -1]))
