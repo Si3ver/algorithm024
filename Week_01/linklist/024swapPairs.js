@@ -5,7 +5,7 @@
  */
 
 // 思路1: 递归
-const swapPairs = function(head) {
+const swapPairs1 = function(head) {
   // terminator
   if (!head || !head.next) return head
   // process & drill down
@@ -17,7 +17,7 @@ const swapPairs = function(head) {
 }
 
 // 思路2: 非递归（空指针头）
-const swapPairs = function(head) {
+const swapPairs2 = function(head) {
   const dummy = new ListNode(-1, head)
   let prev = dummy
   while (prev.next && prev.next.next) {
