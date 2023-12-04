@@ -1,31 +1,30 @@
 /**
  * https://leetcode-cn.com/problems/valid-parentheses/
  * 【stack】
- * 
+ *
  */
 
-const isValid = function(s) {
-  const stack = [],
-        m = new Map([
-          [')', '('],
-          [']', '['],
-          ['}', '{']
-        ])
-
-  let res = true
-  for(let i = 0; i < s.length; ++i) {
-    const ch = s[i]
-    if (!m.has(ch)) {
-      stack.push(ch)
-    } else {
-      if (stack.length > 0 && stack[stack.length - 1] === m.get(ch)) {
-        stack.pop()
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+  const m = new Map([
+      ['(', ')'],
+      ['[', ']'],
+      ['{', '}'],
+  ]);
+  const stack = [];
+  let isMatch = true;
+  for (let i = 0; i < s.length; ++i) {
+      const ch = s[i];
+      if (m.has(ch)) {
+          stack.push(m.get(ch));
+      } else if (stack.length && stack[stack.length - 1] === ch) {
+          stack.pop();
       } else {
-        res = false
-        break
+          isMatch = false;
       }
-    }
   }
-  
-  return stack.length ? false : res
-}
+  return isMatch && stack.length === 0;
+};
