@@ -1,30 +1,33 @@
 /**
  * https://leetcode-cn.com/problems/group-anagrams/
  * 字母异位词分组
- * 
- * 【map】
- * 
+ *
+ * 【hashmap】
+ *
  */
 
-const groupAnagrams = function(strs) {
-  if (!Object.prototype.toString.apply(strs) === '[object Array]'
-    || strs.length < 1
-  ) return []
-  const m = {}, startCodePoint = 'a'.codePointAt(0)
+/**
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+var groupAnagrams = function(strs) {
+  if (!Array.isArray(strs) || strs.length < 1) return []
+
+  const m = new Map(), startCp = 'a'.codePointAt(0);
   strs.forEach(str => {
-    const cntArr = new Array(26).fill(0)
-    for(let i = 0; i < str.length; ++i) {
-      ++cntArr[str.codePointAt(i) - startCodePoint]
-    }
-    const key = cntArr.toString()
-    if (m[key] === void(0)) {
-      m[key] = [str]
-    } else {
-      m[key].push(str)
-    }
+      const cntArr = Array(26).fill(0);
+      for (let i = 0; i < str.length; ++i) {
+          cntArr[str.codePointAt(i) - startCp] += 1;
+      }
+      const key = cntArr.toString();
+      if (!m.has(key)) {
+          m.set(key, [str])
+      } else {
+          m.set(key, [...m.get(key), str])
+      }
   })
-  return Object.values(m)
-}
+  return Array.from(m.values());
+};
 
 
 // ---- test case ----
