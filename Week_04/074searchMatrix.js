@@ -1,15 +1,17 @@
 /**
  * https://leetcode-cn.com/problems/search-a-2d-matrix/
- * 
+ *
  * 74. 搜索二维矩阵
- * 
+ *
  *  0  1  2  3   4  5  6  7  8  9  10 11
  * 00 01 02 03, 10 11 12 13, 20 21 22 23
  * m = 3, n = 4
- * 
+ *
  * x -> i, j
- * 
+ *
  * i = Math.floor(x / n), j = x % n
+ *
+ * 复杂度 log(mn) = log(m) + log(n) < logm * logn < O(m + n) < O(mn)
  */
 
 const searchMatrix = function(matrix, target) {
