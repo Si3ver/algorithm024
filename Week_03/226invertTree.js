@@ -28,3 +28,22 @@ const invertTree = function(root) {
   // revert states
   return root
 }
+
+// queue + bfs
+var invertTree2 = function(root) {
+    if (!root) return root;
+    let queue = [root];
+    while (queue.length) {
+        const node = queue.pop();
+        const tmp = node.left;
+        node.left = node.right;
+        node.right = tmp;
+        if (node.left) {
+            queue.unshift(node.left);
+        }
+        if (node.right) {
+            queue.unshift(node.right);
+        }
+    }
+    return root;
+};
