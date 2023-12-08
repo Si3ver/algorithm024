@@ -1,0 +1,14 @@
+<script>
+    // Object.prototype.toString.call([1, 2, 3]);
+
+    let a = {
+        value: 1,
+        valueOf: function () {
+            return this.value++
+        }
+    }
+
+    if (a == 1 && a == 2 && a == 3) { // 隐式类型转换
+        console.log('bingo!')
+    }
+</script>
