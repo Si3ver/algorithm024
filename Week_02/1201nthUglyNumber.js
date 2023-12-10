@@ -1,7 +1,7 @@
 /**
  * https://leetcode-cn.com/problems/ugly-number-iii/
- * 
- * 解法： 
+ *
+ * 解法：
  * 1. 二分
  * 2. 容斥原理，计算个数
  */
@@ -12,29 +12,29 @@ const gcd = (x, y) => x % y ? gcd(y, x % y) : y
 const lcm = (x, y) => x * y / gcd(x, y)
 
 // 解法一
-const nthUglyNumber1 = function(n, a, b, c) {
-  const ab = lcm(a, b),
-        ac = lcm(a, c),
-        bc = lcm(b, c),
-        abc = lcm(ab, c)
-  let left = 0, right = n * Math.min(a, b, c)
-  while(left <= right) {
-    const mid = Math.floor((left + right) / 2)
-    const num = Math.floor(mid / a)
-              + Math.floor(mid / b)
-              + Math.floor(mid / c)
-              - Math.floor(mid / ab)
-              - Math.floor(mid / ac)
-              - Math.floor(mid / bc)
-              + Math.floor(mid / abc)
-    if (num >= n) {
-      right = mid - 1
-    } else {
-      left = mid + 1
+var nthUglyNumber = function(n, a, b, c) {
+    const ab = lcm(a, b),
+          ac = lcm(a, c),
+          bc = lcm(b, c),
+         abc = lcm(ab, c);
+    let left = 0, right = n * Math.min(a, b, c);
+    while (left <= right) {
+        const mid = left + ((right - left) >> 1);
+        const num = Math.floor(mid / a)
+                  + Math.floor(mid / b)
+                  + Math.floor(mid / c)
+                  - Math.floor(mid / ab)
+                  - Math.floor(mid / ac)
+                  - Math.floor(mid / bc)
+                  + Math.floor(mid / abc);
+        if (num >= n) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
     }
-  }
-  return left
-}
+    return left;
+};
 
 // 解法二：【优化】位运算提速(但需要用bigInt类型，防止越界)
 const nthUglyNumber = function(n, a, b, c) {
