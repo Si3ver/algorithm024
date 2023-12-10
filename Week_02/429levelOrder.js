@@ -4,18 +4,19 @@
  * BFS
  */
 
-function levelOrder(root) {
-  if (root == null) return []
-  const res = [], queue = [root]
-  while(queue.length) {
-    const line = [], n = queue.length
-    for(let i = 0; i < n; ++i) {
-      const root = queue.pop()
-      if (root.children.length)
-        root.children.forEach(child => queue.unshift(child))
-      line.push(root.val)
+var levelOrder = function(root) {
+    if (!root) return [];
+    const res = [], queue = [root];
+    while (queue.length) {
+        const line = [], n = queue.length;
+        for (let i = 0; i < n; ++i) {
+            const node = queue.pop()
+            if (node.children.length) {
+                node.children.forEach(child => queue.unshift(child))
+            }
+            line.push(node.val)
+        }
+        res.push(line);
     }
-    res.push(line)
-  }
-  return res
-}
+    return res;
+};

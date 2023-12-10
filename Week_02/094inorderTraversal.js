@@ -4,7 +4,7 @@
 
 // 1. 递归DFS
 var inorderTraversal = function(root) {
-    if (root == null) return []
+    if (!root) return [];
     const res = [];
     const dfs = (p) => {
         if (p.left) dfs(p.left);
@@ -15,7 +15,7 @@ var inorderTraversal = function(root) {
     return res;
 };
 
-// 2. 非递归，手动维护stack
+// 2. 非递归，手动维护 stack
 var inorderTraversal = function(root) {
     if (root == null) return [];
     const res = [], stack = [];
