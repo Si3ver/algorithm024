@@ -17,6 +17,8 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
+
+// 递归版
 const isValidBST = function(root) {
   function helper(root, lower, upper) {
     // terminator
