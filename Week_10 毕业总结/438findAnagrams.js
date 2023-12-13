@@ -4,7 +4,7 @@
  */
 
 // 滑动窗口 + 数组统计 O(n)
-function findAnagrams (s, p) {
+function findAnagrams1 (s, p) {
   const m = s.length, n = p.length
   if (m < n || n < 1) return []
   const startIdx = 'a'.codePointAt(0)
@@ -36,7 +36,47 @@ function findAnagrams (s, p) {
   return res
 }
 
+// 滑动窗口套路
+var findAnagrams = function(s, t) {
+    const need = new Map(), wind = new Map();
+    for (const ch of t) {
+        need.set(ch, (need.get(ch) || 0) + 1);
+    }
+
+    const res = [], size = t.length;
+    let count = 0;
+    for (let i = 0, j = 0; j < s.length; ++j) {
+        // Step1: 扩 1
+        const jChar = s[j];
+        if (need.has(jChar)) {
+            wind.set(jChar, (wind.get(jChar) || 0) + 1);
+            if (wind.get(jChar) === need.get(jChar)) { // !!
+                ++count;
+            }
+        } else { // 遇到不符合的元素，可以直接挪左指针到 j+1
+            wind.clear();
+            count = 0;
+            i = j + 1;
+            continue;
+        }
+        // Step2: 看看结果ok不
+        if (j - i + 1 === size) {
+            if (count === need.size) {
+                res.push(i);
+            }
+            // Step3: 缩 1
+            const iChar = s[i];
+            ++i;
+            if (wind.get(iChar) === need.get(iChar)) { // !!
+                --count;
+            }
+            wind.set(iChar, wind.get(iChar) - 1);
+        }
+    }
+    return res;
+};
+
 // ---- test case ----
 console.log(findAnagrams('cbaebabacd', 'abc'))  // [0, 6]
 console.log(findAnagrams('abab', 'ab'))   // [0, 1, 2]
-console.log(findAnagrams('baa', 'aa'))
+// console.log(findAnagrams('baa', 'aa'))

@@ -11,15 +11,16 @@
 var maxSlidingWindow = function(nums, k) {
     const res = [], win = [];
     for (let i = 0; i < nums.length; ++i) {
-        if (i > 0 && i - win[0] >= k) {
+        if (win.length > 0 && i - win[0] >= k) { // 删除队首过期元素
             win.shift();
         }
-        while (win.length > 0 && nums[win[win.length - 1]] <= nums[i]) {
+        while (win.length > 0 && nums[i] >= nums[win[win.length - 1]]) { // 删除队尾所有又旧又小的元素
             win.pop();
         }
-        win.push(i);
+
+        win.push(i); // 入队
         if (i >= k - 1) {
-            res.push(nums[win[0]]);
+            res.push(nums[win[0]]); // 队首元素
         }
     }
     return res;
