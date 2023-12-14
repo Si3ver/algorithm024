@@ -3,7 +3,7 @@
  * 思路：
  * 1. 建立辅助函数，扩充4个下标。pStart，pEnd，iStart，iEnd
  * 2. 递归调用辅助函数
- * 
+ *
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
  *     this.val = (val===undefined ? 0 : val)
