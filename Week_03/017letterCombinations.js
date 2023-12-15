@@ -2,36 +2,39 @@
  * https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/
  * 思路：分治
  * 1. 画递归树，构造辅助函数
- * 
+ *
  * @param {string} digits
  * @return {string[]}
  */
-const letterCombinations = function(digits) {
-  if (typeof digits !== 'string' || digits.length < 1) return []
+var letterCombinations = function(digits) {
+    if (!digits.length) return [];
+    const map = new Map([
+        ['2', 'abc'], ['3', 'def'], ['4', 'ghi'],
+        ['5', 'jkl'], ['6', 'mno'], ['7', 'pqrs'],
+        ['8', 'tuv'], ['9', 'wxyz']
+    ]);
 
-  const m = new Map([
-    ['2', 'abc'], ['3', 'def'],
-    ['4', 'ghi'], ['5', 'jkl'],
-    ['6', 'mno'], ['7', 'pqrs'],
-    ['8', 'tuv'], ['9', 'wxyz']]),
-    res = []
+    const res = [];
+    const helper = (level, path) => {
+        // terminator
+        if (level === digits.length) {
+            res.push(path.join(''));
+            return;
+        }
+        // process
+        const selectors = map.get(digits[level]);
+        for (let i = 0; i < selectors.length; ++i) {
+            path.push(selectors[i]);
+            // drill down
+            helper(level + 1, path);
+            // revert status
+            path.pop();
+        }
+    }
 
-  const helper = (level, path) => {
-    if (level === digits.length) {
-      res.push(path.join(''))
-      return
-    }
-    const selectors = m.get(digits[level])
-    for(let i = 0; i < selectors.length; ++i) {
-      path.push(selectors[i])
-      helper(level + 1, path)
-      path.pop()
-    }
-  }
-  
-  helper(0, [])
-  return res
-}
+    helper(0, []);
+    return res;
+};
 
 console.log(letterCombinations('23'))
 // console.log(letterCombinations('995'))
