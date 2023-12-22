@@ -1,0 +1,17 @@
+<script>
+    function foo() {
+        console.log(this);
+    }
+
+    var obj1 = {
+        name: 'obj1',
+        foo: foo,
+    };
+
+    var obj2 = {
+        name: 'obj2',
+        obj1: obj1,
+    }
+
+    obj2.obj1.foo(); // obj1 隐式绑定，指向最近的
+</script>

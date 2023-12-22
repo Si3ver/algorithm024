@@ -1,0 +1,15 @@
+<script>
+function foo() {
+    console.log(this);
+}
+
+var obj1 = {
+    name: 'obj1',
+    foo: foo,
+};
+var obj2 = {
+    name: 'obj2',
+};
+
+(obj2.foo = obj1.foo)(); // window
+</script>

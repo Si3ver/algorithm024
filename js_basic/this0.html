@@ -1,0 +1,13 @@
+<script>
+    function foo() {
+        console.log(this);
+    }
+
+    foo(); // Window
+    
+    var obj = {
+        name: 'wl',
+        foo: foo,
+    };
+    obj.foo(); // Object<obj>
+</script>
