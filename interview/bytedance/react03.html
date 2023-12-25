@@ -1,0 +1,62 @@
+<script>
+/**
+ * 构建一个 render 函数，将 data 对象渲染为以下 dom
+
+<ul class="list">
+    <li>douyin</li>
+    <li>toutiao</li>
+</ul>
+
+ */
+
+function Element({tagName, props, children}){
+    if(!(this instanceof Element)){
+        return new Element({tagName, props, children})
+    }
+    this.tagName = tagName;
+    this.props = props || {};
+    this.children = children || [];
+    // debug1
+    console.log('Element: ', this);
+}
+
+Element.prototype.render = function(){
+
+    var el = document.createElement(this.tagName),
+    props = this.props,
+    propName,
+    propValue;
+
+    for (propName in props){
+        propValue = props[propName];
+        el.setAttribute(propName, propValue);
+    }
+
+    this.children.forEach(function(child) {
+        var childEl = null;
+        if (child instanceof Element) {
+            childEl = child.render(); // recursive
+        } else {
+            childEl = document.createTextNode(child);
+        }
+        console.log('child', childEl);
+        el.appendChild(childEl);
+    });
+
+    return el;
+};
+
+
+// ---- test case ----
+const data = {
+    tagName: 'ul',
+    props: { 'class': 'list' },
+    children: [
+        { tagName: 'li', children: ['douyin'] },
+        { tagName: 'li', children: ['toutiao'] },
+    ]
+}
+const ele = new Element(data);
+const dom = ele.render();
+console.log(ele, dom);
+</script>
