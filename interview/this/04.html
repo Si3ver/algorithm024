@@ -1,0 +1,41 @@
+<script>
+inner = 'windowInner'
+
+function say() {
+    console.log(inner);
+    console.log(this.inner);
+}
+
+var obj1 = (function() {
+    var inner = '1-1';
+    return {
+        inner: '1-2',
+        say: function() {
+            console.log(inner);
+            console.log(this.inner);
+        }
+    }
+})();
+
+var obj2 = (function() {
+    var inner = '2-1';
+    return {
+        inner: '2-2',
+        say: function() {
+            console.log(inner);
+            console.log(this.inner);
+        }
+    }
+})();
+
+
+say();              // windowInner  windowInner
+obj1.say();         // 1-1  1-2
+obj2.say();         // 2-1  2-2
+obj1.say = say;
+obj1.say();         // windowInner 1-2
+obj1.say = obj2.say;
+obj1.say();         // 2-1  1-2
+
+// js 作用域(定义时确定)  vs this(运行时确定)
+</script>

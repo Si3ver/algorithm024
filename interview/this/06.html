@@ -1,0 +1,37 @@
+<script>
+window.b = 1;
+function fn () {
+  console.log(this.b, this === window);
+}
+const fn2 = () => {
+  console.log(this.b, this === window);
+}
+const a = {
+  b: 2,
+  k: () => {
+    return fn();
+  },
+  o: function () {
+    return fn();
+  },
+  l: () => {
+    return fn2();
+  },
+  p: function () {
+    return fn2();
+  },
+  j: () => {
+    fn.call(this);
+  },
+  u: function () {
+    fn.call(this);
+  }
+}
+
+a.k(); // 1 true
+a.o(); // 1 true
+a.l(); // 1 true
+a.p(); // 1 true
+a.j(); // 1 true
+a.u(); // 2 false
+</script>

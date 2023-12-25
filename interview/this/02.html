@@ -1,0 +1,11 @@
+<script>
+var A = function () { this.b = 3; }
+var a = new A();
+A.prototype.b = 9;
+
+var b = 7;
+A(); // -> window.b = 3
+
+console.log(b);    // 3
+console.log(a.b);  // 3
+</script>

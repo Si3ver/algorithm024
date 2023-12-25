@@ -1,0 +1,16 @@
+<script>
+// es6 版本
+window.name = 'ByteDance';
+class A {
+	constructor() {
+  	    this.name = 123;
+	}
+	getA() { 
+	    console.log(this);
+		return this.name + 1; 
+	}
+}
+let a = new A();
+let funcA = a.getA;
+funcA(); // this 为 undefined，Uncaught TypeError: Cannot read properties of undefined (reading 'name')
+</script>

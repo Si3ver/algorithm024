@@ -1,0 +1,18 @@
+<script>
+// es6 arrow func
+window.name = 'ByteDance';
+class A {
+    constructor() {
+        this.name = 123;
+    }
+    getA = () => { 
+        console.log(this); // 指向实例 {name: 123, getA: () => {...}}
+        return this.name + 1; 
+    }
+}
+let a = new A();
+let funcA = a.getA;
+funcA(); // 124
+
+// https://blog.csdn.net/corner2030/article/details/97802475
+</script>
