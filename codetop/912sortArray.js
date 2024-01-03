@@ -3,29 +3,28 @@
  * 912. 排序数组 | medium
  */
 
-function quickSort(arr, left = 0, right = arr.length - 1) {
-  if (left >= right) return
-  const pivotIdx = partition(arr, left, right)
-  quickSort(arr, left, pivotIdx - 1)
-  quickSort(arr, pivotIdx + 1, right)
-}
+var sortArray = function(nums, left = 0, right = nums.length - 1) {
+    if (left >= right) return nums;
+    const pivotIndex = partition(nums, left, right);
+    sortArray(nums, left, pivotIndex - 1);
+    sortArray(nums, pivotIndex + 1, right);
+    return nums;
+};
 
-function partition(arr, left, right) {
-  const pivot = arr[left]
-  while (left < right) {
-    while (left < right && arr[right] >= pivot) --right
-    if (left < right) arr[left] = arr[right]
-    while (left < right && arr[left] <= pivot) ++left
-    if (left < right) arr[right] = arr[left]
-  }
-  arr[left] = pivot
-  return left
-}
-
-function sortArray(arr) {
-  quickSort(arr, 0, arr.length - 1)
-  return arr
+function partition(nums, left, right) {
+    const pivot = nums[left];
+    while (left < right) {
+        // console.log(left, right, nums)
+        while (left < right && nums[right] >= pivot) --right;
+        if (left < right) nums[left] = nums[right];
+        while (left < right && nums[left] <= pivot) ++left;
+        if (left < right) nums[right] = nums[left];
+    }
+    nums[left] = pivot;
+    // console.log(nums, left, right)
+    return left;
 }
 
 // ---- test case ----
 console.log(sortArray([5,2,3,1]))
+console.log(sortArray([0]))
