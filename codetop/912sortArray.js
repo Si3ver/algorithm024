@@ -3,11 +3,22 @@
  * 912. 排序数组 | medium
  */
 
-var sortArray = function(nums, left = 0, right = nums.length - 1) {
-    if (left >= right) return nums;
-    const pivotIndex = partition(nums, left, right);
-    sortArray(nums, left, pivotIndex - 1);
-    sortArray(nums, pivotIndex + 1, right);
+function sortArray(nums) {
+    quickSort(nums, 0, nums.length - 1);
+    return nums;
+}
+
+function quickSort(nums, lo, hi) {
+    if (lo >= hi) return;
+
+    const pivotIndex = partition(nums, lo, hi);
+    // 优化：跳过与 pivot 相等的元素
+    let nextHi = pivotIndex - 1, nextLo = pivotIndex + 1;
+    while (nextHi > lo && nums[nextHi] === nums[pivotIndex]) --nextHi;
+    while (nextLo < hi && nums[nextLo] === nums[pivotIndex]) ++nextLo;
+
+    quickSort(nums, lo, nextHi);
+    quickSort(nums, nextLo, hi);
     return nums;
 };
 
