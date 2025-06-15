@@ -1,11 +1,10 @@
 /**
  * https://leetcode-cn.com/problems/n-queens/
  * 51. N 皇后 | hard
- * 
+ *
  */
 
 function buildResult (res, n) {
-  const m = new Map()
   const graphes = []
   res.forEach(state => {
     const graph = []

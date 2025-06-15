@@ -7,7 +7,12 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
 }
 
 function partition(arr, left, right) {
-  const pivot = arr[left]
+//   const pivot = arr[left]
+
+const mid = left + ((right - left) >> 1);
+const pivot = arr[mid];
+arr[mid] = arr[left];
+// arr[left] = pivot;
   while (left < right) {
     while (left < right && arr[right] >= pivot) --right
     if (left < right) arr[left] = arr[right]
@@ -23,16 +28,16 @@ const arr1 = [5,2,3,1]
 quickSort(arr1)
 console.log(arr1)
 
-// const arr2 = [5,1,1,2,0,0]
-// quickSort(arr2)
-// console.log(arr2)
+const arr2 = [5,1,1,2,0,0]
+quickSort(arr2)
+console.log(arr2)
 
 
 
 // var quickSort = function(nums) {
 //   function quickSortHelper(nums, start, end) {
 //       if (start >= end) return nums
-  
+
 //       var pivotValue = nums[start]
 //       var smaller = start
 //       for (var i = start + 1; i <= end; i++) {
@@ -47,11 +52,11 @@ console.log(arr1)
 //       var smallerCache = nums[smaller]
 //       nums[smaller] = nums[start]
 //       nums[start] = smallerCache
-      
+
 //       quickSortHelper(nums, start, smaller - 1)
 //       quickSortHelper(nums, smaller + 1, end)
 //       return nums
 //   }
-  
+
 //   return quickSortHelper(nums, 0, nums.length - 1)
 // };
